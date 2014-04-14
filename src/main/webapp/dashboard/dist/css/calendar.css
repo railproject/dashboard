@@ -1,0 +1,13 @@
+.container-full {
+    margin: 0 auto;
+    width: 90%;
+}
+.row div {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+.date {
+    height: 60px;
+}

@@ -41,7 +41,6 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 /**
  * Tests for PortfolioController that instantiate directly the minimum
@@ -114,7 +113,7 @@ public class StandalonePortfolioControllerTests {
 		StompHeaderAccessor replyHeaders = StompHeaderAccessor.wrap(reply);
 		assertEquals("0", replyHeaders.getSessionId());
 		assertEquals("0", replyHeaders.getSubscriptionId());
-		assertEquals("/positions", replyHeaders.getDestination());
+		assertEquals("/app/positions", replyHeaders.getDestination());
 
 		String json = new String((byte[]) reply.getPayload(), Charset.forName("UTF-8"));
 		new JsonPathExpectationsHelper("$[0].company").assertValue(json, "Citrix Systems, Inc.");
