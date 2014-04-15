@@ -7,6 +7,8 @@ public class Cell {
 
     private String date;
 
+    private String dayOfWeek;
+
     private int zysx;
 
     private int td;
@@ -25,6 +27,14 @@ public class Cell {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public void setDayOfWeek(String dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
     }
 
     public int getZysx() {

@@ -35,7 +35,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 		}
 		else {
             System.out.println("############################################################");
-			registry.addEndpoint("/portfolio").withSockJS();
+			registry.addEndpoint("/portfolio", "/calendar").withSockJS();
 		}
 	}
 

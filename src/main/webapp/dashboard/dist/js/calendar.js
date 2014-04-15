@@ -50,29 +50,23 @@ function CalendarModel() {
         }
     }
     self.updateCalendar = function(calendars) {
-        self.cellMap = {};
+        self.cleanDate()
         self.loadCalendar(calendars);
+    }
+    self.cleanDate = function() {
+        self.cells.removeAll();
+        self.cellMap = {};
     }
 }
 
 function Cell(cell) {
     var self = this;
 
-    self.date = ko.observable(cell.date);
+    self.date = ko.observable("<span class=\"badge\" data-bind=\"text: dayOfWeek\">" + cell.dayOfWeek + "</span>" + cell.date);
     self.zysx = ko.observable(cell.zysx);
     self.td = ko.observable(cell.td);
     self.lk = ko.observable(cell.lk);
     self.sg = ko.observable(cell.sg);
     self.hc = ko.observable(cell.hc);
     self.qt = ko.observable(cell.qt);
-
-    self.updateCell = function(cell) {
-        self.date(cell.date);
-        self.zysx(cell.zysx);
-        self.td(cell.td);
-        self.lk(cell.lk);
-        self.sg(cell.sg);
-        self.hc(cell.hc);
-        self.qt(cell.qt);
-    }
 }
