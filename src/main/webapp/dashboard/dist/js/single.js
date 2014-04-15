@@ -61,7 +61,7 @@ function PanelModel() {
     self.loadCalendar = function(calendars) {
         for ( var i = 0; i < calendars.length; i++) {
             var panel = new Panel(i, calendars[i]);
-            self.panels.push(i, panel);
+            self.panels.push(panel);
             self.panelMap[panel.date] = panel;
         }
     }
@@ -81,9 +81,11 @@ function Panel(num, panel) {
     var self = this;
 
     self.date = ko.observable("<span class=\"badge\">" + panel.dayOfWeek + "</span>" + panel.date);
+    self.num = num;
     self.index = ko.observable(num);
     self.isActive = ko.computed(function() {
-        return self.index == 0? "active" : "";
+        console.log("index: " + self.num)
+        return self.num == 0? "active" : "";
     })
     self.zysx = ko.observable(panel.zysx);
     self.td = ko.observable(panel.td);

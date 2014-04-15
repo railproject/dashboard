@@ -33,13 +33,11 @@
 ================================================== -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <!--&lt;!&ndash; ko foreach: calendar().indicators &ndash;&gt;-->
-        <!--<li data-target="#myCarousel" data-bind="attr: {data-slide-to : index}"></li>-->
-        <!--&lt;!&ndash; /ko &ndash;&gt;-->
+    <ol class="carousel-indicators" data-bind="foreach: panel().panels">
+        <li data-target="#myCarousel" data-bind="attr: {'data-slide-to' : index}, css: isActive"></li>
     </ol>
     <div class="carousel-inner" data-bind="foreach: panel().panels">
-        <div class="item active">
+        <div class="item" data-bind="css : isActive">
             <img data-src="holder.js/900x400/auto/#777:#7a7a7a/text:First slide" alt="First slide">
             <div class="container">
                 <div class="carousel-caption">
