@@ -6,3 +6,4 @@ Demonstrates 3 approaches to testing a Spring STOMP over WebSocket application:
 3. End-to-end, full integration tests using an embedded Tomcat and a simple STOMP Java client (`tomcat` sub-package)
 
 See the Javadoc of the respective tests for more details.
+test git
