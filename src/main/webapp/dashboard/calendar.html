@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="dist/css/calendar.css">
+    <script src="dist/js/jquery-1.8.2.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="dist/js/knockout-2.3.0.debug.js"></script>
+    <script src="dist/js/sockjs.min.js"></script>
+    <script src="dist/js/stomp.min.js"></script>
+    <script src="dist/js/calendar.js"></script>
 </head>
 <body>
     <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
@@ -77,24 +83,5 @@
         </footer>
 
     </div><!--/.container-->
-
-
-    <script src="dist/js/jquery-1.8.2.js"></script>
-    <script src="dist/js/bootstrap.min.js"></script>
-    <script src="dist/js/knockout-2.3.0.debug.js"></script>
-    <script src="dist/js/sockjs.min.js"></script>
-    <script src="dist/js/stomp.min.js"></script>
-    <script src="dist/js/calendar.js"></script>
-    <script type="text/javascript">
-        (function() {
-            var socket = new SockJS('/dashboard/calendar');
-            var stompClient = Stomp.over(socket);
-
-            var appModel = new ApplicationModel(stompClient);
-            ko.applyBindings(appModel);
-
-            appModel.connect();
-        })();
-    </script>
 </body>
 </html>

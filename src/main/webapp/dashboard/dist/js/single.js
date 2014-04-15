@@ -3,21 +3,26 @@
  */
 
 $(function() {
+    $('.carousel').carousel({
+        interval: false
+    })
+
     var socket = new SockJS('/dashboard/calendar');
     var stompClient = Stomp.over(socket);
 
-    var appModel = new ApplicationModel(stompClient);
+//    ko.applyBindings(new ViewModel());
+
+    var appModel = new PanelApplicationModel(stompClient);
     ko.applyBindings(appModel);
 
     appModel.connect();
-})();
+});
 
-
-function ApplicationModel(stompClient) {
+function PanelApplicationModel(stompClient) {
     var self = this;
 
     self.username = ko.observable();
-    self.calendar = ko.observable(new CalendarModel());
+    self.panel = ko.observable(new PanelModel());
 
     self.connect = function() {
         stompClient.connect({}, function(frame) {
@@ -26,10 +31,10 @@ function ApplicationModel(stompClient) {
             self.username(frame.headers['user-name']);
 
             stompClient.subscribe("/app/calendars", function(message) {
-                self.calendar().loadCalendar(JSON.parse(message.body));
+                self.panel().loadCalendar(JSON.parse(message.body));
             });
             stompClient.subscribe("/topic/calendar.update", function(message) {
-                self.calendar().updateCalendar(JSON.parse(message.body));
+                self.panel().updateCalendar(JSON.parse(message.body));
             });
 //            stompClient.subscribe("/user/queue/position-updates", function(message) {
 //                self.pushNotification("Position update " + message.body);
@@ -46,18 +51,18 @@ function ApplicationModel(stompClient) {
 
 
 
-function CalendarModel() {
+function PanelModel() {
     var self = this;
 
-    self.cells = ko.observableArray();
+    self.panels = ko.observableArray();
 
-    self.cellMap = {};
+    self.panelMap = {};
 
     self.loadCalendar = function(calendars) {
         for ( var i = 0; i < calendars.length; i++) {
-            var cell = new Cell(calendars[i]);
-            self.cells.push(cell);
-            self.cellMap[cell.date] = cell;
+            var panel = new Panel(i, calendars[i]);
+            self.panels.push(i, panel);
+            self.panelMap[panel.date] = panel;
         }
     }
 
@@ -67,19 +72,23 @@ function CalendarModel() {
     }
 
     self.cleanDate = function() {
-        self.cells.removeAll();
-        self.cellMap = {};
+        self.panels.removeAll();
+        self.panelMap = {};
     }
 }
 
-function Cell(cell) {
+function Panel(num, panel) {
     var self = this;
 
-    self.date = ko.observable("<span class=\"badge\">" + cell.dayOfWeek + "</span>" + cell.date);
-    self.zysx = ko.observable(cell.zysx);
-    self.td = ko.observable(cell.td);
-    self.lk = ko.observable(cell.lk);
-    self.sg = ko.observable(cell.sg);
-    self.hc = ko.observable(cell.hc);
-    self.qt = ko.observable(cell.qt);
+    self.date = ko.observable("<span class=\"badge\">" + panel.dayOfWeek + "</span>" + panel.date);
+    self.index = ko.observable(num);
+    self.isActive = ko.computed(function() {
+        return self.index == 0? "active" : "";
+    })
+    self.zysx = ko.observable(panel.zysx);
+    self.td = ko.observable(panel.td);
+    self.lk = ko.observable(panel.lk);
+    self.sg = ko.observable(panel.sg);
+    self.hc = ko.observable(panel.hc);
+    self.qt = ko.observable(panel.qt);
 }

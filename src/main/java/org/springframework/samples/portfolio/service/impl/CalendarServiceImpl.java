@@ -22,7 +22,7 @@ public class CalendarServiceImpl implements CalendarService{
         for(int i = 0; i < 40; i++) {
             Cell cell = new Cell();
             cell.setDate(date.plusDays(i).toString("yyyy-MM-dd"));
-            cell.setDayOfWeek(date.dayOfWeek().getAsText());
+            cell.setDayOfWeek(date.plusDays(i).dayOfWeek().getAsText());
             cell.setZysx(getNum());
             cell.setTd(getNum());
             cell.setLk(getNum());
