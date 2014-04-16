@@ -24,15 +24,25 @@ function PanelApplicationModel(stompClient) {
     self.username = ko.observable();
     self.panel = ko.observable(new PanelModel());
 
+    $.ajax({
+        url: "/dashboard/calendar/list",
+        async: false,
+        type: "GET",
+        success: self.panel().loadCalendar
+    })
+
     self.connect = function() {
         stompClient.connect({}, function(frame) {
 
             console.log('Connected ' + frame);
             self.username(frame.headers['user-name']);
 
-            stompClient.subscribe("/app/calendars", function(message) {
-                self.panel().loadCalendar(JSON.parse(message.body));
-            });
+//            stompClient.subscribe("/app/calendars", function(message) {
+//                self.panel().loadCalendar(JSON.parse(message.body));
+//            });
+//            $.get("/dashboard/calendar/list", self.calendar().loadCalendar);
+
+
             stompClient.subscribe("/topic/calendar.update", function(message) {
                 self.panel().updateCalendar(JSON.parse(message.body));
             });
@@ -69,9 +79,12 @@ function PanelModel() {
     self.updateCalendar = function(calendars) {
 //        self.cleanDate()
 //        self.loadCalendar(calendars);
+//        if ( self.panels().length == 0) {
+//            self.loadCalendar(calendars);
+//        }
         for ( var i = 0; i < calendars.length; i++) {
-            var panel = new Panel(i, calendars[i]);
-            var panel = self.panelMap[panel.date];
+            var panel0 = new Panel(i, calendars[i]);
+            var panel = self.panelMap[panel0.date];
             if (panel != null) {
                 panel.updatePanel(calendars[i])
             }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by star on 4/14/14.
@@ -14,15 +15,14 @@ import java.util.List;
 @Service
 public class CalendarServiceImpl implements CalendarService{
 
-    private LocalDate date = LocalDate.now();
-
     @Override
     public List<Cell> getCalendar() {
+        LocalDate date = LocalDate.now();
         List<Cell> list = new ArrayList<Cell>();
         for(int i = 0; i < 40; i++) {
             Cell cell = new Cell();
             cell.setDate(date.plusDays(i).toString("yyyy-MM-dd"));
-            cell.setDayOfWeek(date.plusDays(i).dayOfWeek().getAsText());
+            cell.setDayOfWeek(date.plusDays(i).dayOfWeek().getAsShortText(Locale.CHINA));
             cell.setZysx(getNum());
             cell.setTd(getNum());
             cell.setLk(getNum());

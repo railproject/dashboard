@@ -18,7 +18,9 @@ package org.springframework.samples.portfolio.web.tomcat;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.*;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
@@ -29,12 +31,11 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.samples.portfolio.config.DispatcherServletInitializer;
-import org.springframework.samples.portfolio.config.WebSecurityInitializer;
 import org.springframework.samples.portfolio.service.Trade;
 import org.springframework.samples.portfolio.web.support.client.StompMessageHandler;
 import org.springframework.samples.portfolio.web.support.client.StompSession;
-import org.springframework.samples.portfolio.web.support.server.TomcatWebSocketTestServer;
 import org.springframework.samples.portfolio.web.support.client.WebSocketStompClient;
+import org.springframework.samples.portfolio.web.support.server.TomcatWebSocketTestServer;
 import org.springframework.test.util.JsonPathExpectationsHelper;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -97,7 +98,7 @@ public class IntegrationPortfolioTests {
 		port = SocketUtils.findAvailableTcpPort();
 
 		server = new TomcatWebSocketTestServer(port);
-		server.deployConfig(DispatcherServletInitializer.class, WebSecurityInitializer.class);
+		server.deployConfig(DispatcherServletInitializer.class); //WebSecurityInitializer.class
 		server.start();
 
 		loginAndSaveJsessionIdCookie("fabrice", "fab123", headers);
