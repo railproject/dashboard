@@ -67,8 +67,15 @@ function PanelModel() {
     }
 
     self.updateCalendar = function(calendars) {
-        self.cleanDate()
-        self.loadCalendar(calendars);
+//        self.cleanDate()
+//        self.loadCalendar(calendars);
+        for ( var i = 0; i < calendars.length; i++) {
+            var panel = new Panel(i, calendars[i]);
+            var panel = self.panelMap[panel.date];
+            if (panel != null) {
+                panel.updatePanel(calendars[i])
+            }
+        }
     }
 
     self.cleanDate = function() {
@@ -80,11 +87,11 @@ function PanelModel() {
 function Panel(num, panel) {
     var self = this;
 
-    self.date = ko.observable("<span class=\"badge\">" + panel.dayOfWeek + "</span>" + panel.date);
+    self.date = panel.date;
+    self.dateStr = ko.observable("<span class=\"badge\">" + panel.dayOfWeek + "</span>" + self.date);
     self.num = num;
     self.index = ko.observable(num);
     self.isActive = ko.computed(function() {
-        console.log("index: " + self.num)
         return self.num == 0? "active" : "";
     })
     self.zysx = ko.observable(panel.zysx);
@@ -93,4 +100,13 @@ function Panel(num, panel) {
     self.sg = ko.observable(panel.sg);
     self.hc = ko.observable(panel.hc);
     self.qt = ko.observable(panel.qt);
+
+    self.updatePanel = function(panel) {
+        self.zysx(panel.zysx);
+        self.td(panel.td);
+        self.lk(panel.lk);
+        self.sg(panel.sg);
+        self.hc(panel.hc);
+        self.qt(panel.qt);
+    }
 }
