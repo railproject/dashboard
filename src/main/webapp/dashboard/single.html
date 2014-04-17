@@ -38,39 +38,31 @@
     </ol>
     <div class="carousel-inner" data-bind="foreach: panel().panels">
         <div class="item" data-bind="css : isActive">
-            <img data-src="holder.js/900x400/auto/#777:#7a7a7a/text:First slide" alt="First slide">
+            <img data-src="holder.js/900x400/auto/#777:#7a7a7a/text:__">
             <div class="container">
                 <div class="carousel-caption">
-                    <ul class="list-group">
-                        <li class="list-group-item date" data-bind="html: dateStr">
-                            <span class="badge">星期一</span>
-                            2014-04-15
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge" data-bind="text: zysx">0</span>
-                            重要事项
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge" data-bind="text: td">0</span>
-                            图定客车
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge" data-bind="text: lk">0</span>
-                            临客
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge" data-bind="text: sg">0</span>
-                            施工
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge" data-bind="text: hc">0</span>
-                            货车
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge" data-bind="text: qt">0</span>
-                            其他
-                        </li>
-                    </ul>
+                    <h3 data-bind="html: dateStr"></h3>
+                    <h4>
+                        重要事项<span class="label label-danger" data-bind="text: zysx">0</span>
+                    </h4>
+                    <h4>
+                        图定<span class="label label-info" data-bind="text: td">0</span>
+                    </h4>
+                    <h4>
+                        临客<span class="label label-info" data-bind="text: lk">0</span>
+                    </h4>
+                    <h4>
+                        施工<span class="label label-info" data-bind="text: sg">0</span>
+                    </h4>
+                    <h4>
+                        货车<span class="label label-info" data-bind="text: hc">0</span>
+                    </h4>
+                    <h4>
+                        其他<span class="label label-info" data-bind="text: qt">0</span>
+                    </h4>
+                    <h4>
+                        <a class="btn btn-link pull-right">运行图</a>
+                    </h4>
                 </div>
             </div>
         </div>
