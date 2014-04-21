@@ -101,7 +101,7 @@ function Panel(num, panel) {
     var self = this;
 
     self.date = panel.date;
-    self.dateStr = ko.observable("<span class=\"badge\">" + panel.dayOfWeek + "</span>" + self.date);
+    self.dateStr = ko.observable(self.date + "<span class=\"label label-primary\">" + panel.dayOfWeek + "</span>");
     self.num = num;
     self.index = ko.observable(num);
     self.isActive = ko.computed(function() {

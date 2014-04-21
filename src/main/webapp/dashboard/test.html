@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="dist/css/calendar.css">
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="dist/css/carousel.css">
+    <link rel="stylesheet" href="dist/css/single.css">
     <script src="dist/js/jquery-1.8.2.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
     <style>
@@ -47,57 +51,92 @@
             <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
         </div>
 
-        <ul class="list-group">
-            <li class="list-group-item">
-                <span class="badge">14</span>
-                Cras justo odio
-            </li>
-            <li class="list-group-item">
-                <span class="badge">14</span>
-                Cras justo odio
-            </li>
-            <li class="list-group-item">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <span class="badge">14</span>
-                        Cras justo odio
-                    </li>
-                    <li class="list-group-item">
-                        <span class="badge">14</span>
-                        Cras justo odio
-                    </li>
-                </ul>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <span class="badge">14</span>
-                        Cras justo odio
-                    </li>
-                    <li class="list-group-item">
-                        <span class="badge">14</span>
-                        Cras justo odio
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
         <div class="row" >
-            <div class="col-lg-1">
-                <div class="row">
-                    <div class="col-lg-4"> 1 </div>
-                    <div class="col-lg-4"> 2 </div>
-                    <div class="col-lg-4"> 3 </div>
+            <div class="col-lg-12">
+                <div class="row" style="height: 50px;">
+                    <div class="col-lg-8" style=" font-size: 14px;border-right: 2px solid; border-color: lightgrey;"></div>
+                    <div class="col-lg-4">0</div>
                 </div><!-- end nested row -->
             </div><!-- end span 12 -->
-            <div class="col-lg-1">
+            <div class="col-lg-12">
                 <div class="row">
-                    <div class="col-lg-4"> 1 </div>
-                    <div class="col-lg-4"> 2 </div>
-                    <div class="col-lg-4"> 3 </div>
+                    <div class="col-lg-4" style="border-right: 2px solid; border-color: lightgrey;">0</div>
+                    <div class="col-lg-4" style="border-right: 2px solid; border-color: lightgrey;">0</div>
+                    <div class="col-lg-4">0</div>
                 </div><!-- end nested row -->
             </div><!-- end span 12 -->
-
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-4" style="border-right: 2px solid; border-color: lightgrey;">0</div>
+                    <div class="col-lg-4" style="border-right: 2px solid; border-color: lightgrey;">0</div>
+                    <div class="col-lg-4">
+                        <a class="btn btn-link" href="#" role="button">运行图 &raquo;</a>
+                    </div>
+                </div><!-- end nested row -->
+            </div><!-- end span 12 -->
         </div> <!-- end row -->
 
+
+
+
     </div><!-- /.container -->
+
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <img data-src="holder.js/900x400/auto/#777:#7a7a7a/text:__">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <div class="row mytable" style="margin-top: -300px; background-color: lightgrey">
+                            <div class="col-lg-12">
+                                <div class="row" style="height: 100px;">
+                                    <div class="col-lg-8 cell" style=" font-size: 14px;" data-bind="html: dateStr"></div>
+                                    <div class="col-lg-4">
+                                        <span class="badge pull-right" data-bind="text: zysx">0</span>
+                                        重要事项
+                                    </div>
+                                </div><!-- end nested row -->
+                            </div><!-- end span 12 -->
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-4 cell">
+                                        <span class="badge pull-right" data-bind="text: td">0</span>
+                                        图定客车
+                                    </div>
+                                    <div class="col-lg-4 cell">
+                                        <span class="badge pull-right" data-bind="text: lk">0</span>
+                                        临客
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <span class="badge pull-right" data-bind="text: sg">0</span>
+                                        施工
+                                    </div>
+                                </div><!-- end nested row -->
+                            </div><!-- end span 12 -->
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-4 cell">
+                                        <span class="badge pull-right" data-bind="text: hc">0</span>
+                                        货车
+                                    </div>
+                                    <div class="col-lg-4 cell">
+                                        <span class="badge pull-right" data-bind="text: qt">0</span>
+                                        其他
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <a class="btn btn-link pull-right" href="#" role="button">运行图 &raquo;</a>
+                                    </div>
+                                </div><!-- end nested row -->
+                            </div><!-- end span 12 -->
+                        </div> <!-- end row -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div><!-- /.carousel -->
+
 </body>
 </html>
