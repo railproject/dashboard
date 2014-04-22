@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface CalendarService {
     List<Cell> getCalendar();
+    List<String> get40Days();
 }

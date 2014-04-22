@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="resources/css/custom-bootstrap.css"/>
+<link  type="text/css" rel="stylesheet" href="resources/css/font-awesome.min.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/login.css"/>
+<script src="resources/js/jquery.js"></script>
+<script src="resources/js/html5.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/respond.min.js"></script>
+<title>login</title>
+</head>
+<body>
+<div class="login">
+  <div class="login_backgroud">
+    <div class="login_overlay">
+      <div class="login-logo"></div>
+      <div class="login_input" id="content_1">
+        <input type="text" class="form-control" placeholder="用户名" style="width:240px; float:left; margin-right:15px;">
+        <input type="text" class="form-control" placeholder="密码" style="width:240px; float:left; margin-right:15px;">
+        <div class="btn-group">
+          <a class="btn btn-warning" type="submit" style="padding:6px 13px; height:30px;" id="botton_1">登&nbsp;录</a>
+        </div>
+      </div>
+      <div class="login_input btn-display" id="content_2">
+        <div class="col-md-6 col-sm-6  col-xs-6">
+            <a type="button" href="kanban/index.html" class="btn btn-default btn-big">
+                <i class="fa fa-user"></i>
+                管理员
+            </a>
+        </div>
+        <div class="col-md-6 col-sm-6  col-xs-6">
+            <a type="button" href="#" class="btn btn-primary btn-big">
+                <i class="fa fa-user-md"></i>
+                用&nbsp;&nbsp;户
+            </a>
+        </div>
+      </div>
+      <!--输入框结束--> 
+      <!--错误提示开始--> 
+      <!--      <div class="alert alert-danger" style="margin-top:15px;width:200px;height:26px;line-height:26px;font-size:10px;padding-top:0px; ">您输入的用户名或密码有误！ </div>--> 
+      <!--错误提示结束--> 
+    </div>
+    <div class="aquila"> </div>
+    <div class="login_footer">版权所有中国电子科技集团第三十二研究所&nbsp;&nbsp;|&nbsp; 版本：1.0.0</div>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".login_backgroud").css("min-height", $(window).height()+ "px");
+	$(window).resize(function () {
+			$(".login_backgroud").css("min-height", $(window).height()+ "px");
+	 });
+
+    $("#botton_1").click(function(){
+        $("#content_1").addClass("btn-display");
+        $("#content_2").removeClass("btn-display");
+    });
+});
+</script>
+</body>
+</html>

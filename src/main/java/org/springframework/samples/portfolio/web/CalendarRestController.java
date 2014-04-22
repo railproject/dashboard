@@ -23,9 +23,15 @@ public class CalendarRestController {
     @Autowired
     private CalendarService calendarService;
 
-    @RequestMapping(value = "/list", method= RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<Cell> getCalendar() throws Exception {
         logger.debug("get all calendars");
         return this.calendarService.getCalendar();
+    }
+
+    @RequestMapping(value = "/days", method = RequestMethod.GET)
+    public List<String> get40Days() throws Exception {
+        logger.debug("get 40 days");
+        return this.calendarService.get40Days();
     }
 }
