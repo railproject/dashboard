@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>resourceStatistics</title>
+<!-- Bootstrap core CSS -->
+<link href="../resources/css/custom-bootstrap.css" rel="stylesheet">
+<!--font-awesome-->
+<link  type="text/css" rel="stylesheet" href="../resources/css/font-awesome.min.css"/>
+<link  type="text/css" rel="stylesheet" href="../resources/css/datepicker.css"/>
+<!-- Custom styles for this template -->
+<link href="../resources/css/style.css" rel="stylesheet">
+<script src="../resources/js/jquery.js"></script>
+<script src="../resources/js/html5.js"></script>
+<script src="../resources/js/bootstrap.min.js"></script>
+<script src="../resources/js/jquery.dataTables.js"></script>
+<script src="../resources/js/moment.min.js"></script>
+<script src="../resources/js/knockout.js"></script>
+<script src="../resources/js/sockjs.min.js"></script>
+<script src="../resources/js/stomp.min.js"></script>
+<script src="../resources/js/kanban.js"></script>
+</head>
+<body class="Iframe_body">
+<!--以上为必须要的-->
+<ol class="breadcrumb">
+  <span><i class="fa fa-anchor"></i>当前位置：</span>
+  <li><a href="kanban.html">看板</a></li>
+</ol>
+<!--分栏框开始-->
+<div class="panel panel-default">
+  <div class="panel-heading" >
+    <h3 class="panel-title" > <i class="fa fa-external-link"></i>看板</h3>
+  </div>
+  <!--panle-heading-->
+  
+  <div class="panel-body">
+    <div class="bs-example bs-example-tabs">
+      <ul id="myTab" class="nav nav-tabs">
+        <li class="active"><a href="#calendar" data-toggle="tab">日历看板</a></li>
+        <li class=""><a href="#single" data-toggle="tab">单日看板</a></li>
+      </ul>
+      <div id="myTabContent" class="tab-content margin-top-15" >
+          <div class="tab-pane fade in active" id="calendar">
+              <div class="row" data-bind="foreach: calendar().cells">
+                  <div class="col-xs-1 col-sm-1 col-md-1 width-10 margin-top-15">
+                      <div class="bordered text-center">
+                          <h4 data-bind="text: dateStr"></h4>
+                          <p>图客：<span class="label label-primary" data-bind="text: td">0</span></p>
+                          <p>施工：<span class="label label-primary" data-bind="text: sg">0</span></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="tab-pane fade in" id="single" data-bind="foreach: dayindex().days">
+              <button type="button" data-bind="text: day, css: isToday">now</button>
+          </div>
+      </div>
+    </div>
+  </div>
+  <!--panel-body--> 
+  <!--panel-footer--> 
+</div>
+
+<!--分栏框结束-->
+
+</body>
+</html>

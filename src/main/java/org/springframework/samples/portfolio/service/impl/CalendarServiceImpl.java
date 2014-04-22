@@ -34,6 +34,16 @@ public class CalendarServiceImpl implements CalendarService{
         return list;
     }
 
+    @Override
+    public List<String> get40Days() {
+        List<String> list = new ArrayList<String>();
+        LocalDate today = LocalDate.now();
+        for(int i = 0; i< 40; i++) {
+            list.add(today.plusDays(i).toString("yyyy-MM-dd"));
+        }
+        return list;
+    }
+
     private int getNum() {
         int t = new java.util.Random().nextInt(99999);
         if(t < 10000) t+=10000;

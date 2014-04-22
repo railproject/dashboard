@@ -1,39 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8">
-  <title>Sign in &middot; Stock Trading Portfolio Sign in</title>
-  <link href="assets/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
-  <link href="assets/common/login.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="resources/css/custom-bootstrap.css"/>
+<link  type="text/css" rel="stylesheet" href="resources/css/font-awesome.min.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/login.css"/>
+<script src="resources/js/jquery.js"></script>
+<script src="resources/js/html5.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/respond.min.js"></script>
+<title>login</title>
 </head>
 <body>
-
-  <div class="container">
-    <div data-bind="visible: showErrorMessage" class="alert alert-error">
-      Invalid username/password.
+<div class="login">
+  <div class="login_backgroud">
+    <div class="login_overlay">
+      <div class="login-logo"></div>
+      <div class="login_input" id="content_1">
+        <input type="text" class="form-control" placeholder="用户名" style="width:240px; float:left; margin-right:15px;">
+        <input type="text" class="form-control" placeholder="密码" style="width:240px; float:left; margin-right:15px;">
+        <div class="btn-group">
+          <a class="btn btn-warning" type="submit" style="padding:6px 13px; height:30px;" id="botton_1">登&nbsp;录</a>
+        </div>
+      </div>
+      <div class="login_input btn-display" id="content_2">
+        <div class="col-md-6 col-sm-6  col-xs-6">
+            <a type="button" href="kanban/index.html" class="btn btn-default btn-big">
+                <i class="fa fa-user"></i>
+                管理员
+            </a>
+        </div>
+        <div class="col-md-6 col-sm-6  col-xs-6">
+            <a type="button" href="#" class="btn btn-primary btn-big">
+                <i class="fa fa-user-md"></i>
+                用&nbsp;&nbsp;户
+            </a>
+        </div>
+      </div>
+      <!--输入框结束--> 
+      <!--错误提示开始--> 
+      <!--      <div class="alert alert-danger" style="margin-top:15px;width:200px;height:26px;line-height:26px;font-size:10px;padding-top:0px; ">您输入的用户名或密码有误！ </div>--> 
+      <!--错误提示结束--> 
     </div>
-    <form class="form-signin" method="post" action="login.html">
-      <h3 class="muted form-signin-heading">Please sign in</h3>
-      <input type="text" class="input-block-level" placeholder="User name" name="username">
-      <input type="password" class="input-block-level" placeholder="Password" name="password">
-      <button class="btn btn-primary" type="submit">Sign in</button>
-      <hr>
-      <p class="text-info"><small>
-        Log in as <strong>fabrice/fab123</strong> or <strong>paulson/bond</strong><br>
-        See <code>WebSecurityConfig.java</code></small></p>
-    </form>
-  </div><!-- /container -->
+    <div class="aquila"> </div>
+    <div class="login_footer">版权所有中国电子科技集团第三十二研究所&nbsp;&nbsp;|&nbsp; 版本：1.0.0</div>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".login_backgroud").css("min-height", $(window).height()+ "px");
+	$(window).resize(function () {
+			$(".login_backgroud").css("min-height", $(window).height()+ "px");
+	 });
 
-  <script src="assets/lib/knockout/knockout.js"></script>
-
-  <script type="text/javascript">
-    ko.applyBindings({
-      showErrorMessage : ko.computed(function() {
-        var query = window.location.search;
-        return query ? (query.indexOf('error') != -1) : false;
-      })
+    $("#botton_1").click(function(){
+        $("#content_1").addClass("btn-display");
+        $("#content_2").removeClass("btn-display");
     });
-  </script>
-
+});
+</script>
 </body>
 </html>
