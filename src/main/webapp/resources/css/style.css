@@ -421,7 +421,7 @@ body {
 	padding:11px 3%;
 }
 .width-10 {
-    width: 12.5%;
+    width: 11%;
 }
 .bordered {
     border: 1px solid #ced5e3;
@@ -431,6 +431,9 @@ body {
 }
 .margin-top-15 {
     margin-top: 15px;
+}
+.margin-left-15{
+    margin-left: 15px;
 }
 .margin-top-5 {
     margin-top: 5px;
@@ -985,4 +988,16 @@ nav .menu_one {
 .red_number {
     color: #ff0000;
     /*font-size: 1.5em;*/
+}
+.width-7 {
+    width: 66%;
+}
+.width-3 {
+    width: 33%;
+}
+.row-striped > div:nth-child(odd) {
+    background-color: #f9f4ef;
+}
+.row-striped > div:nth-child(even) {
+    background-color: #f3f6f9;
 }
