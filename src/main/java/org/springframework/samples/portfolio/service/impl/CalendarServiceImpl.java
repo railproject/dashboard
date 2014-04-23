@@ -71,7 +71,7 @@ public class CalendarServiceImpl implements CalendarService{
 
         Client client = Client.create();
 
-        WebResource webResource = client.resource("http://10.1.191.135:7003/rail/plan");
+        WebResource webResource = client.resource("http://10.1.132.149:7001/rail/plan");
 
         String values = null;
         try {
@@ -115,5 +115,10 @@ public class CalendarServiceImpl implements CalendarService{
             logger.error(e);
         }
         return list;
+    }
+
+    public static void main(String[] args) {
+        CalendarServiceImpl service = new CalendarServiceImpl();
+        service.getCount();
     }
 }
