@@ -133,8 +133,14 @@ function Cell(cell) {
 //    self.dateStr = ko.observable("<span class=\"badge\">" + cell.dayOfWeek + "</span>" + cell.date);
 //    self.zysx = ko.observable(cell.zysx);
     self.td = ko.observable(cell.td);
+    self.tdfa = ko.computed(function() {
+        return cell.td > 0? "red_number": ""
+    })
 //    self.lk = ko.observable(cell.lk);
     self.sg = ko.observable(cell.sg);
+    self.sgfa = ko.computed(function() {
+        return cell.sg > 0? "red_number": ""
+    })
 //    self.hc = ko.observable(cell.hc);
 //    self.qt = ko.observable(cell.qt);
 

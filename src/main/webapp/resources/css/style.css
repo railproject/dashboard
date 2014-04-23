@@ -981,3 +981,8 @@ nav .menu_one {
 @media all and (max-width:900px) {
 }
 /*拖动数值css*/
+
+.red_number {
+    color: #ff0000;
+    /*font-size: 1.5em;*/
+}
