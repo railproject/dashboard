@@ -99,6 +99,14 @@ public class CalendarServiceImpl implements CalendarService{
                 cell.setTd((Integer) dd.get("trainlineCounts"));
                 list.add(cell);
             }
+            Collections.sort(list, new Comparator<Cell>() {
+                @Override
+                public int compare(Cell o1, Cell o2) {
+                    LocalDate d1 = LocalDate.parse(o1.getDate());
+                    LocalDate d2 = LocalDate.parse(o2.getDate());
+                    return d1.compareTo(d2);
+                }
+            });
         } catch (JsonProcessingException e) {
 //            e.printStackTrace();
             logger.error(e);
