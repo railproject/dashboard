@@ -1,13 +1,19 @@
 package org.springframework.samples.portfolio.service.impl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.joda.time.LocalDate;
 import org.springframework.samples.portfolio.model.Cell;
 import org.springframework.samples.portfolio.service.CalendarService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Created by star on 4/14/14.
@@ -15,9 +21,11 @@ import java.util.Locale;
 @Service
 public class CalendarServiceImpl implements CalendarService{
 
+    private static Log logger = LogFactory.getLog(CalendarServiceImpl.class);
+
     @Override
     public List<Cell> getCalendar() {
-        LocalDate date = LocalDate.now();
+        /*LocalDate date = LocalDate.now();
         List<Cell> list = new ArrayList<Cell>();
         for(int i = 0; i < 40; i++) {
             Cell cell = new Cell();
@@ -30,8 +38,8 @@ public class CalendarServiceImpl implements CalendarService{
             cell.setHc(getNum());
             cell.setSg(getNum());
             list.add(cell);
-        }
-        return list;
+        }*/
+        return getCount();
     }
 
     @Override
@@ -48,5 +56,56 @@ public class CalendarServiceImpl implements CalendarService{
         int t = new java.util.Random().nextInt(99999);
         if(t < 10000) t+=10000;
         return t;
+    }
+
+    private List<Cell> getCount() {
+        List<Cell> list = new ArrayList<Cell>();
+        ObjectMapper objectMapper = new ObjectMapper();
+        LocalDate now = LocalDate.now();
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("sourceTime", now.toString("yyyy-MM-dd") + " 00:00:00");
+        params.put("targetTime", now.plusDays(40).toString("yyyy-MM-dd") + " 00:00:00");
+        params.put("code", "01");
+        params.put("timeFormat", "yyyy-MM-dd hh:mm:ss");
+        //groupByDay:false
+
+        Client client = Client.create();
+
+        WebResource webResource = client.resource("http://10.1.191.135:7003/rail/plan");
+
+        String values = null;
+        try {
+            values = objectMapper.writeValueAsString(params);
+            logger.debug("REST REQ POST:" + values);
+
+
+            ClientResponse response = webResource.type("application/json").accept("application/json").post(ClientResponse.class, values);
+
+            if (response.getStatus() != 200) {
+                throw new RuntimeException("Failed : HTTP error code : "
+                        + response.getStatus());
+            }
+
+            String resp = response.getEntity(String.class);
+            logger.debug("RESP RESP:" + resp);
+
+            Map<String, Object> result = objectMapper.readValue(resp, Map.class);
+
+            List<Map<String, Object>> data = (List<Map<String, Object>>) result.get("data");
+            System.out.println(data.size());
+            for(Map<String, Object> dd: data) {
+                Cell cell = new Cell();
+                cell.setDate((String) dd.get("sourceTime"));
+                cell.setTd((Integer) dd.get("trainlineCounts"));
+                list.add(cell);
+            }
+        } catch (JsonProcessingException e) {
+//            e.printStackTrace();
+            logger.error(e);
+        } catch (IOException e) {
+//            e.printStackTrace();
+            logger.error(e);
+        }
+        return list;
     }
 }
