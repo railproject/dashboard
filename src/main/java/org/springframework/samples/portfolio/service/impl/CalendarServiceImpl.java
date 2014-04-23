@@ -27,7 +27,7 @@ public class CalendarServiceImpl implements CalendarService{
     public List<Cell> getCalendar() {
         /*LocalDate date = LocalDate.now();
         List<Cell> list = new ArrayList<Cell>();
-        for(int i = 0; i < 40; i++) {
+        for(int i = 0; i < 42; i++) {
             Cell cell = new Cell();
             cell.setDate(date.plusDays(i).toString("yyyy-MM-dd"));
             cell.setDayOfWeek(date.plusDays(i).dayOfWeek().getAsShortText(Locale.CHINA));
@@ -64,7 +64,7 @@ public class CalendarServiceImpl implements CalendarService{
         LocalDate now = LocalDate.now();
         Map<String, String> params = new HashMap<String, String>();
         params.put("sourceTime", now.toString("yyyy-MM-dd") + " 00:00:00");
-        params.put("targetTime", now.plusDays(40).toString("yyyy-MM-dd") + " 00:00:00");
+        params.put("targetTime", now.plusDays(42).toString("yyyy-MM-dd") + " 00:00:00");
         params.put("code", "01");
         params.put("timeFormat", "yyyy-MM-dd hh:mm:ss");
         //groupByDay:false
