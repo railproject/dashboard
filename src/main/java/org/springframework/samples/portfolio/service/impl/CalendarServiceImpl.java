@@ -42,8 +42,8 @@ public class CalendarServiceImpl implements CalendarService{
             cell.setSg(getNum());
             list.add(cell);
         }
-        logger.info("webResource: " + webResource.getURI());
-        return list;
+        logger.debug("webResource: " + webResource.getURI());
+        return getCount();
     }
 
     @Override

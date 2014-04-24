@@ -16,7 +16,7 @@ public class RestClient {
 
     private static Log logger = LogFactory.getLog(RestClient.class);
 
-    @Value("#{kanban.rest.url}")
+    @Value("${kanban.rest.url}")
     private String rest_url;
 
     @Bean

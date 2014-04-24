@@ -10,17 +10,18 @@ import org.springframework.core.io.Resource;
 import java.io.IOException;
 
 /**
- * Created by star on 4/24/14.
+ * Created by star on 4/22/14.
  */
 @Configuration
-@Import(RestClient.class)
-public class KanbanConfig {
+@Import({JdbcTemplateConfig.class})
+public class DataSourceConfig {
 
     @Bean
-    public static PropertyPlaceholderConfigurer propertyConfigurer() throws IOException {
+    public PropertyPlaceholderConfigurer propertyConfigurer() throws IOException {
         PropertyPlaceholderConfigurer props = new PropertyPlaceholderConfigurer();
-        props.setLocations(new Resource[] {new ClassPathResource("kanban.properties")});
+        props.setLocations(new Resource[] {new ClassPathResource("datasource.properties")});
         return props;
     }
+
 
 }
