@@ -149,27 +149,27 @@ function Cell(cell) {
 //    self.dateStr = ko.observable("<span class=\"badge\">" + cell.dayOfWeek + "</span>" + cell.date);
     self.zysx = ko.observable(cell.zysx);
     self.zysxfa = ko.computed(function() {
-        return cell.zysx > 0? "red_number": ""
+        return cell.zysx > 0? "red_number fa-2x": "margin-top-10"
     })
     self.td = ko.observable(cell.td);
     self.tdfa = ko.computed(function() {
-        return cell.td > 0? "red_number": ""
+        return cell.td > 0? "red_number fa-2x": "margin-top-10"
     })
     self.lk = ko.observable(cell.lk);
     self.lkfa = ko.computed(function() {
-        return cell.lk > 0? "red_number": ""
+        return cell.lk > 0? "red_number fa-2x": "margin-top-10"
     })
     self.sg = ko.observable(cell.sg);
     self.sgfa = ko.computed(function() {
-        return cell.sg > 0? "red_number": ""
+        return cell.sg > 0? "red_number fa-2x": "margin-top-10"
     })
     self.hc = ko.observable(cell.hc);
     self.hcfa = ko.computed(function() {
-        return cell.hc > 0? "red_number": ""
+        return cell.hc > 0? "red_number fa-2x": "margin-top-10"
     })
     self.qt = ko.observable(cell.qt);
     self.qtfa = ko.computed(function() {
-        return cell.qt > 0? "red_number": ""
+        return cell.qt > 0? "red_number fa-2x": "margin-top-10"
     })
 
     self.updateCell = function(cell) {
