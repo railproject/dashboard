@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>resourceStatistics</title>
-<!-- Bootstrap core CSS -->
-<link href="../resources/css/custom-bootstrap.css" rel="stylesheet">
-<!--font-awesome-->
-<link  type="text/css" rel="stylesheet" href="../resources/css/font-awesome.min.css"/>
-<!-- Custom styles for this template -->
-<link href="../resources/css/style.css" rel="stylesheet">
-<script src="../resources/js/jquery.js"></script>
-<script src="../resources/js/html5.js"></script>
-<script src="../resources/js/bootstrap.min.js"></script>
-<script src="../resources/js/jquery.dataTables.js"></script>
-<script src="../resources/js/moment.min.js"></script>
-<script src="../resources/js/knockout.js"></script>
-<script src="../resources/js/sockjs.min.js"></script>
-<script src="../resources/js/stomp.min.js"></script>
-<script src="../resources/js/kanban_static.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="../resources/css/custom-bootstrap.css" rel="stylesheet">
+    <!--font-awesome-->
+    <link  type="text/css" rel="stylesheet" href="../resources/css/font-awesome.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../resources/css/animate.css">
+    <!-- Custom styles for this template -->
+    <link href="../resources/css/style.css" rel="stylesheet">
+    <script src="../resources/js/jquery.js"></script>
+    <script src="../resources/js/html5.js"></script>
+    <script src="../resources/js/bootstrap.min.js"></script>
+    <script src="../resources/js/jquery-timer.js"></script>
+    <script src="../resources/js/moment.min.js"></script>
+    <script src="../resources/js/knockout.js"></script>
+    <script src="../resources/js/sockjs.min.js"></script>
+    <script src="../resources/js/stomp.min.js"></script>
+    <script src="../resources/js/animate.js"></script>
+    <script src="../resources/js/kanban.js"></script>
 </head>
 <body class="Iframe_body">
 <!--以上为必须要的-->
@@ -37,7 +39,13 @@
               <div class="row">
                   <div class="col-xs-7 col-sm-7 col-md-7 bordered width-7">
                       <div class="row">
-                          <div class="col-xs-10 col-sm-10 col-md-10 fa-2x" data-bind="text: calendar().today.dateStr">today</div>
+                          <div class="col-xs-1 col-sm-1 col-md-1 width-20px padding-left-0" data-bind="attr: {id: calendar().today.dateStr}">
+                              <div class="spinner margin-top-10" style="display: none;">
+                                  <div class="double-bounce1"></div>
+                                  <div class="double-bounce2"></div>
+                              </div>
+                          </div>
+                          <div class="col-xs-9 col-sm-9 col-md-9 fa-2x" data-bind="text: calendar().today.dateStr">today</div>
                           <div class="col-xs-2 col-sm-2 col-md-2">
                               <div class="btn-group pull-right " style="padding-top:5px;">
                                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -86,7 +94,13 @@
                   </div>
                   <div class="col-xs-5 col-sm-5 col-md-5 bordered width-3" style="margin-left:5px;">
                       <div class="row">
-                          <div class="col-xs-10 col-sm-10 col-md-10 fa-2x" data-bind="text: calendar().tomorrow.dateStr">tomorrow</div>
+                          <div class="col-xs-1 col-sm-1 col-md-1 width-20px padding-left-0" data-bind="attr: {id: calendar().tomorrow.dateStr}">
+                              <div class="spinner margin-top-10" style="display: none;">
+                                  <div class="double-bounce1"></div>
+                                  <div class="double-bounce2"></div>
+                              </div>
+                          </div>
+                          <div class="col-xs-9 col-sm-9 col-md-9 fa-2x" data-bind="text: calendar().tomorrow.dateStr">tomorrow</div>
                           <div class="col-xs-2 col-sm-2 col-md-2">
                               <div class="btn-group pull-right " style="padding-top:5px;">
                                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -133,7 +147,13 @@
               <div class="row" data-bind="foreach: calendar().cells">
                   <div class="col-xs-1 col-sm-1 col-md-1 width-10 bordered margin-left-15 margin-top-15">
                       <div class="row">
-                          <div class="col-xs-12 col-md-12 col-lg-12 text-center" data-bind="text: dateStr"></div>
+                          <div class="col-xs-1 col-md-1 col-lg-1 padding-left-0" id="2014-04-24" data-bind="attr: {id: dateStr}">
+                              <div class="spinner" style="width: 10px; height: 10px; display: none;">
+                                  <div class="double-bounce1"></div>
+                                  <div class="double-bounce2"></div>
+                              </div>
+                          </div>
+                          <div class="col-xs-11 col-md-11 col-lg-11 text-center" data-bind="text: dateStr"></div>
                       </div>
                       <div class="row">
                           <div class="col-xs-4 col-md-4 col-lg-4 text-left margin-top-10" style="padding-right:0;">
