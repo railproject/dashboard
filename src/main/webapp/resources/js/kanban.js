@@ -41,8 +41,8 @@ function ApplicationModel(stompClient) {
             self.username(frame.headers['user-name']);
 
             /*stompClient.subscribe("/app/calendars", function(message) {
-                self.calendar().loadCalendar(JSON.parse(message.body));
-            });*/
+             self.calendar().loadCalendar(JSON.parse(message.body));
+             });*/
 //            $.get("/dashboard/calendar/list", self.calendar().loadCalendar);
 
             stompClient.subscribe("/topic/calendar.update", function(message) {
@@ -68,13 +68,23 @@ function CalendarModel() {
 
     self.cells = ko.observableArray();
 
+    self.today = ko.observable();
+
+    self.tomorrow = ko.observable();
+
     self.cellMap = {};
 
     self.loadCalendar = function(calendars) {
         for ( var i = 0; i < calendars.length; i++) {
             var cell = new Cell(calendars[i]);
-            self.cells.push(cell);
-            self.cellMap[cell.date] = cell;
+            if (i == 0) {
+                self.today = cell;
+            } else if (i == 1) {
+                self.tomorrow = cell;
+            } else {
+                self.cells.push(cell);
+                self.cellMap[cell.date] = cell;
+            }
         }
     }
 
@@ -85,12 +95,18 @@ function CalendarModel() {
 //            self.loadCalendar(calendars);
 //        }
         for ( var i = 0; i < calendars.length; i ++) {
-            var cell0 = new Cell(calendars[i]);
-            var cell = self.cellMap[cell0.date];
-            if ( cell != null) {
-                cell.updateCell(calendars[i]);
-            }
 
+            if ( i ==0 ) {
+                self.today.updateCell(calendars[i]);
+            } else if(i == 1) {
+                self.tomorrow.updateCell(calendars[i]);
+            } else {
+                var cell0 = new Cell(calendars[i]);
+                var cell = self.cellMap[cell0.date];
+                if ( cell != null) {
+                    cell.updateCell(calendars[i]);
+                }
+            }
         }
     }
 
@@ -128,28 +144,52 @@ function Day(index, date) {
 function Cell(cell) {
     var self = this;
 
+    self.cell = cell;
     self.date = cell.date; // 必须要，上面用date来做来键值
     self.dateStr = ko.observable(cell.date);
 //    self.dateStr = ko.observable("<span class=\"badge\">" + cell.dayOfWeek + "</span>" + cell.date);
-//    self.zysx = ko.observable(cell.zysx);
+    self.zysx = ko.observable(cell.zysx);
+    self.zysxfa = ko.computed(function() {
+        return cell.zysx > 0? "red_number fa-2x": "fa-2x"
+    })
     self.td = ko.observable(cell.td);
     self.tdfa = ko.computed(function() {
-        return cell.td > 0? "red_number": ""
+        return cell.td > 0? "red_number fa-2x": "fa-2x"
     })
-//    self.lk = ko.observable(cell.lk);
+    self.lk = ko.observable(cell.lk);
+    self.lkfa = ko.computed(function() {
+        return cell.lk > 0? "red_number fa-2x": "fa-2x"
+    })
     self.sg = ko.observable(cell.sg);
     self.sgfa = ko.computed(function() {
-        return cell.sg > 0? "red_number": ""
+        return cell.sg > 0? "red_number fa-2x": "fa-2x"
     })
-//    self.hc = ko.observable(cell.hc);
-//    self.qt = ko.observable(cell.qt);
+    self.hc = ko.observable(cell.hc);
+    self.hcfa = ko.computed(function() {
+        return cell.hc > 0? "red_number fa-2x": "fa-2x"
+    })
+    self.qt = ko.observable(cell.qt);
+    self.qtfa = ko.computed(function() {
+        return cell.qt > 0? "red_number fa-2x": "fa-2x"
+    })
 
     self.updateCell = function(cell) {
-//        self.zysx(cell.zysx);
+        self.date = cell.date;
+        self.dateStr = ko.observable(cell.date);
+        self.zysx(cell.zysx);
         self.td(cell.td);
-//        self.lk(cell.lk);
+        self.lk(cell.lk);
         self.sg(cell.sg);
-//        self.hc(cell.hc);
-//        self.qt(cell.qt);
+        self.hc(cell.hc);
+        self.qt(cell.qt);
+
+        if(self.cell.zysx != cell.zysx
+            || self.cell.td != cell.td
+            || self.cell.lk != cell.lk
+            || self.cell.sg != cell.sg
+            || self.cell.hc != cell.hc
+            || self.cell.qt != cell.qt) {
+            show(cell.date);
+        }
     }
 }

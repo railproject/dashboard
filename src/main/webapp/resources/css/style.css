@@ -423,8 +423,15 @@ body {
 .width-10 {
     width: 11%;
 }
+.width-20px {
+    width: 20px;
+}
+.padding-left-0 {
+    padding-left: 0;
+}
 .bordered {
     border: 1px solid #ced5e3;
+    border-radius:4px;
 }
 .margin-right-10 {
     margin-right: 10px;
