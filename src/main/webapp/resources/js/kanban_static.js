@@ -149,27 +149,27 @@ function Cell(cell) {
 //    self.dateStr = ko.observable("<span class=\"badge\">" + cell.dayOfWeek + "</span>" + cell.date);
     self.zysx = ko.observable(cell.zysx);
     self.zysxfa = ko.computed(function() {
-        return cell.zysx > 0? "red_number fa-2x": "margin-top-10"
+        return cell.zysx > 0? "red_number fa-2x": "fa-2x"
     })
     self.td = ko.observable(cell.td);
     self.tdfa = ko.computed(function() {
-        return cell.td > 0? "red_number fa-2x": "margin-top-10"
+        return cell.td > 0? "red_number fa-2x": "fa-2x"
     })
     self.lk = ko.observable(cell.lk);
     self.lkfa = ko.computed(function() {
-        return cell.lk > 0? "red_number fa-2x": "margin-top-10"
+        return cell.lk > 0? "red_number fa-2x": "fa-2x"
     })
     self.sg = ko.observable(cell.sg);
     self.sgfa = ko.computed(function() {
-        return cell.sg > 0? "red_number fa-2x": "margin-top-10"
+        return cell.sg > 0? "red_number fa-2x": "fa-2x"
     })
     self.hc = ko.observable(cell.hc);
     self.hcfa = ko.computed(function() {
-        return cell.hc > 0? "red_number fa-2x": "margin-top-10"
+        return cell.hc > 0? "red_number fa-2x": "fa-2x"
     })
     self.qt = ko.observable(cell.qt);
     self.qtfa = ko.computed(function() {
-        return cell.qt > 0? "red_number fa-2x": "margin-top-10"
+        return cell.qt > 0? "red_number fa-2x": "fa-2x"
     })
 
     self.updateCell = function(cell) {
