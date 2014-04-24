@@ -2,12 +2,12 @@ package org.springframework.samples.portfolio.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.joda.time.LocalDate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.portfolio.model.Cell;
 import org.springframework.samples.portfolio.service.CalendarService;
 import org.springframework.stereotype.Service;
@@ -22,6 +22,9 @@ import java.util.*;
 public class CalendarServiceImpl implements CalendarService{
 
     private static Log logger = LogFactory.getLog(CalendarServiceImpl.class);
+
+    @Autowired
+    private WebResource webResource;
 
     @Override
     public List<Cell> getCalendar() {
@@ -39,7 +42,8 @@ public class CalendarServiceImpl implements CalendarService{
             cell.setSg(getNum());
             list.add(cell);
         }
-        return getCount();
+        logger.info("webResource: " + webResource.getURI());
+        return list;
     }
 
     @Override
@@ -69,9 +73,9 @@ public class CalendarServiceImpl implements CalendarService{
         params.put("timeFormat", "yyyy-MM-dd hh:mm:ss");
         //groupByDay:false
 
-        Client client = Client.create();
-
-        WebResource webResource = client.resource("http://10.1.191.135:7003/rail/plan");
+//        Client client = Client.create();
+//
+//        WebResource webResource = client.resource("http://10.1.191.135:7003/rail/plan");
 
         String values = null;
         try {
@@ -79,7 +83,7 @@ public class CalendarServiceImpl implements CalendarService{
             logger.debug("REST REQ POST:" + values);
 
 
-            ClientResponse response = webResource.type("application/json").accept("application/json").post(ClientResponse.class, values);
+            ClientResponse response = webResource.path("/rail/plan").type("application/json").accept("application/json").post(ClientResponse.class, values);
 
             if (response.getStatus() != 200) {
                 throw new RuntimeException("Failed : HTTP error code : "
@@ -114,5 +118,10 @@ public class CalendarServiceImpl implements CalendarService{
             logger.error(e);
         }
         return list;
+    }
+
+    public static void main(String[] args) {
+        CalendarServiceImpl service = new CalendarServiceImpl();
+        service.getCount();
     }
 }
