@@ -25,7 +25,7 @@ public class CalendarServiceImpl implements CalendarService{
 
     @Override
     public List<Cell> getCalendar() {
-        /*LocalDate date = LocalDate.now();
+        LocalDate date = LocalDate.now();
         List<Cell> list = new ArrayList<Cell>();
         for(int i = 0; i < 42; i++) {
             Cell cell = new Cell();
@@ -38,7 +38,7 @@ public class CalendarServiceImpl implements CalendarService{
             cell.setHc(getNum());
             cell.setSg(getNum());
             list.add(cell);
-        }*/
+        }
         return getCount();
     }
 
@@ -92,7 +92,6 @@ public class CalendarServiceImpl implements CalendarService{
             Map<String, Object> result = objectMapper.readValue(resp, Map.class);
 
             List<Map<String, Object>> data = (List<Map<String, Object>>) result.get("data");
-            System.out.println(data.size());
             for(Map<String, Object> dd: data) {
                 Cell cell = new Cell();
                 cell.setDate((String) dd.get("sourceTime"));
