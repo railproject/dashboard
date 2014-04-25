@@ -8,8 +8,7 @@ function show(id) {
             $("#" + id).children("div.spinner").hide();
             deffered[id].stop();
             deffered[id] = null;
-            console.log('hide le');
-        }, 2000, true);
+        }, 5000, true);
     } else if (!timer.isActive) {
         timer.play();
     } else if (timer.isActive) {
