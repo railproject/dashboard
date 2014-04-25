@@ -87,13 +87,16 @@ public class Cell {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
         if (!(obj instanceof Cell)) {
             return false;
         }
         Cell cell = (Cell)obj;
         if (this.td == cell.getTd() && this.zysx == cell.getZysx() && this.sg == cell.getSg()
                 && this.lk == cell.getLk() && this.qt == cell.getQt() && this.getHc() == cell.getHc()
-                && this.date.equals(cell.getDate()) && this.dayOfWeek.equals(cell.getDayOfWeek())) {
+                && this.date.equals(cell.getDate())/* && this.dayOfWeek.equals(cell.getDayOfWeek())*/) {
             return true;
         }
         return false;
@@ -101,6 +104,6 @@ public class Cell {
 
     @Override
     public int hashCode() {
-        return this.date.hashCode() + this.dayOfWeek.hashCode() + this.td + this.sg + this.zysx + this.hc + this.qt + this.lk;
+        return this.date.hashCode()/* + this.dayOfWeek.hashCode()*/ + this.td + this.sg + this.zysx + this.hc + this.qt + this.lk;
     }
 }

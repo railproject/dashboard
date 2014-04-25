@@ -35,7 +35,7 @@ public class CalendarSchedule {
         logger.debug("Scheduled: updateCalendar");
         List<Cell> list = calendarService.getCalendar();
         if(preList.containsAll(list)) {
-            logger.info("没有数据更新!");
+            logger.debug("没有数据更新!");
         } else {
             this.messagingTemplate.convertAndSend("/topic/calendar.update", list);
         }
@@ -49,7 +49,7 @@ public class CalendarSchedule {
         cell.setDayOfWeek(LocalDate.now().dayOfWeek().getAsShortText(Locale.CHINA));
         cell.setTd(1234);
         cell.setSg(2345);
-        list.add(cell);
+//        list.add(cell);
 
         List<Cell> list1 = new ArrayList<Cell>();
         Cell cell1 = new Cell();
@@ -57,7 +57,7 @@ public class CalendarSchedule {
         cell1.setDayOfWeek(LocalDate.now().dayOfWeek().getAsShortText(Locale.CHINA));
         cell1.setTd(1234);
         cell1.setSg(2345);
-        list1.add(cell1);
+//        list1.add(cell1);
 
         System.out.println(cell.getDate().hashCode());
         System.out.println(cell1.getDate().hashCode());
