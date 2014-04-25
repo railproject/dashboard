@@ -150,29 +150,37 @@ function Cell(cell) {
 //    self.dateStr = ko.observable("<span class=\"badge\">" + cell.dayOfWeek + "</span>" + cell.date);
     self.zysx = ko.observable(cell.zysx);
     self.zysxfa = ko.computed(function() {
-        return cell.zysx > 0? "red_number fa-2x": "fa-2x"
-    })
+        return cell.zysx > 0? "red_number fa-2x": "fa-2x";
+    });
     self.td = ko.observable(cell.td);
     self.tdfa = ko.computed(function() {
-        return cell.td > 0? "red_number fa-2x": "fa-2x"
-    })
+        return cell.td > 0? "red_number fa-2x": "fa-2x";
+    });
     self.lk = ko.observable(cell.lk);
     self.lkfa = ko.computed(function() {
-        return cell.lk > 0? "red_number fa-2x": "fa-2x"
-    })
+        return cell.lk > 0? "red_number fa-2x": "fa-2x";
+    });
     self.sg = ko.observable(cell.sg);
     self.sgfa = ko.computed(function() {
-        return cell.sg > 0? "red_number fa-2x": "fa-2x"
-    })
+        return cell.sg > 0? "red_number fa-2x": "fa-2x";
+    });
     self.hc = ko.observable(cell.hc);
     self.hcfa = ko.computed(function() {
-        return cell.hc > 0? "red_number fa-2x": "fa-2x"
-    })
+        return cell.hc > 0? "red_number fa-2x": "fa-2x";
+    });
     self.qt = ko.observable(cell.qt);
     self.qtfa = ko.computed(function() {
-        return cell.qt > 0? "red_number fa-2x": "fa-2x"
+        return cell.qt > 0? "red_number fa-2x": "fa-2x";
+    });
+    self.td_sj = ko.observable(cell.td_sj);
+    self.td_sjfa = ko.computed(function() {
+        return cell.td_sj > 0? "red_number fa-2x": "fa-2x"
+    });
+    self.hc_sj = ko.observable(cell.hc_sj);
+    self.hc_sjfa = ko.computed(function() {
+        return cell.hc_sj > 0? "red_number fa-2x": "fa-2x";
     })
-
+;
     self.updateCell = function(cell) {
         self.date = cell.date;
         self.dateStr = ko.observable(cell.date);
@@ -182,13 +190,17 @@ function Cell(cell) {
         self.sg(cell.sg);
         self.hc(cell.hc);
         self.qt(cell.qt);
+        self.td_sj(cell.td_sj);
+        self.hc_sj(cell.hc_sj);
 
         if(self.cell.zysx != cell.zysx
             || self.cell.td != cell.td
             || self.cell.lk != cell.lk
             || self.cell.sg != cell.sg
             || self.cell.hc != cell.hc
-            || self.cell.qt != cell.qt) {
+            || self.cell.qt != cell.qt
+            || self.cell.td_sj != cell.td_sj
+            || self.cell.hc_sj != cell.hc_sj) {
             show(cell.date);
         }
     }

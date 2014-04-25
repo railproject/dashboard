@@ -43,6 +43,11 @@
 			<artifactId>spring-websocket</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -206,6 +211,23 @@
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-client</artifactId>
             <version>1.18.1</version>
+        </dependency>
+
+        <!-- connection pool -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.30</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0</version>
         </dependency>
 
     </dependencies>

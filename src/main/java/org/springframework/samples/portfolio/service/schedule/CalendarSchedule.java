@@ -27,6 +27,11 @@ public class CalendarSchedule {
     @Autowired
     private SimpMessageSendingOperations messagingTemplate;
 
+/*
+    @Autowired
+    private JdbcService jdbcService;
+*/
+
     @Autowired
     private CalendarService calendarService;
 
@@ -34,6 +39,10 @@ public class CalendarSchedule {
     public void updateCalendar() {
         logger.debug("Scheduled: updateCalendar");
         List<Cell> list = calendarService.getCalendar();
+        /*Cell cell = list.get(0);
+        Map<String, Object> result = jdbcService.getCounts();
+        cell.setTd_sj((Integer)result.get("kc"));
+        cell.setHc_sj((Integer)result.get("hc"));*/
         if(preList.containsAll(list)) {
             logger.debug("没有数据更新!");
         } else {

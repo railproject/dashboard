@@ -13,11 +13,15 @@ public class Cell {
 
     private int td;
 
+    private int td_sj;
+
     private int lk;
 
     private int sg;
 
     private int hc;
+
+    private int hc_sj;
 
     private int qt;
 
@@ -83,6 +87,22 @@ public class Cell {
 
     public void setQt(int qt) {
         this.qt = qt;
+    }
+
+    public int getTd_sj() {
+        return td_sj;
+    }
+
+    public void setTd_sj(int td_sj) {
+        this.td_sj = td_sj;
+    }
+
+    public int getHc_sj() {
+        return hc_sj;
+    }
+
+    public void setHc_sj(int hc_sj) {
+        this.hc_sj = hc_sj;
     }
 
     @Override

@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.portfolio.dao.JdbcService;
 import org.springframework.samples.portfolio.model.Cell;
 import org.springframework.samples.portfolio.service.CalendarService;
 import org.springframework.stereotype.Service;
@@ -26,9 +27,13 @@ public class CalendarServiceImpl implements CalendarService{
     @Autowired
     private WebResource webResource;
 
+    @Autowired
+    private JdbcService jdbcService;
+
+
     @Override
     public List<Cell> getCalendar() {
-        /*LocalDate date = LocalDate.now();
+        LocalDate date = LocalDate.now();
         List<Cell> list = new ArrayList<Cell>();
         for(int i = 0; i < 42; i++) {
             Cell cell = new Cell();
@@ -41,8 +46,12 @@ public class CalendarServiceImpl implements CalendarService{
             cell.setHc(getNum());
             cell.setSg(getNum());
             list.add(cell);
-        }*/
-        return getCount();
+        }
+        Map<String, Object> result = jdbcService.getCounts();
+        Cell cell = list.get(0);
+        cell.setTd_sj((Integer)result.get("kc"));
+        cell.setHc_sj((Integer)result.get("hc"));
+        return list;
     }
 
     @Override
@@ -118,6 +127,10 @@ public class CalendarServiceImpl implements CalendarService{
 //            e.printStackTrace();
             logger.error(e);
         }
+        Map<String, Object> result = jdbcService.getCounts();
+        Cell cell = list.get(0);
+        cell.setTd_sj((Integer)result.get("kc"));
+        cell.setHc_sj((Integer)result.get("hc"));
         return list;
     }
 
