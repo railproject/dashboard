@@ -19,7 +19,7 @@ public class KanbanConfig {
     @Bean
     public static PropertyPlaceholderConfigurer propertyConfigurer() throws IOException {
         PropertyPlaceholderConfigurer props = new PropertyPlaceholderConfigurer();
-        props.setLocations(new Resource[] {new ClassPathResource("kanban.properties")});
+        props.setLocations(new Resource[] {new ClassPathResource("kanban.properties"), new ClassPathResource("datasource.properties")});
         return props;
     }
 
