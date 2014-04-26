@@ -120,6 +120,10 @@ public class CalendarServiceImpl implements CalendarService{
                     return d1.compareTo(d2);
                 }
             });
+            Map<String, Object> counts = jdbcService.getCounts();
+            Cell cell = list.get(0);
+            cell.setTd_sj(Integer.parseInt(counts.get("kc").toString()));
+            cell.setHc_sj(Integer.parseInt(counts.get("hc").toString()));
         } catch (JsonProcessingException e) {
 //            e.printStackTrace();
             logger.error(e);
@@ -127,10 +131,6 @@ public class CalendarServiceImpl implements CalendarService{
 //            e.printStackTrace();
             logger.error(e);
         }
-        Map<String, Object> result = jdbcService.getCounts();
-        Cell cell = list.get(0);
-        cell.setTd_sj(Integer.parseInt(result.get("kc").toString()));
-        cell.setHc_sj(Integer.parseInt(result.get("hc").toString()));
         return list;
     }
 
