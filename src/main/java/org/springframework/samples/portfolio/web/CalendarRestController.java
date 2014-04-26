@@ -4,9 +4,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.portfolio.model.Cell;
+import org.springframework.samples.portfolio.model.Grid;
 import org.springframework.samples.portfolio.service.CalendarService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -33,5 +35,11 @@ public class CalendarRestController {
     public List<String> get40Days() throws Exception {
         logger.debug("get 40 days");
         return this.calendarService.get40Days();
+    }
+
+    @RequestMapping(value = "/grid", method = RequestMethod.GET)
+    public List<Grid> getGrid(@RequestParam(value="date") String date) throws Exception {
+        logger.debug("get grid: " + date);
+        return this.calendarService.getGrid(date);
     }
 }

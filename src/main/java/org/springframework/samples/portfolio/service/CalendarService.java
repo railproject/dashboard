@@ -2,6 +2,8 @@ package org.springframework.samples.portfolio.service;
 
 
 import org.springframework.samples.portfolio.model.Cell;
+import org.springframework.samples.portfolio.model.Grid;
+
 import java.util.List;
 
 /**
@@ -10,4 +12,5 @@ import java.util.List;
 public interface CalendarService {
     List<Cell> getCalendar();
     List<String> get40Days();
+    List<Grid> getGrid(String date);
 }
