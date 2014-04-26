@@ -33,7 +33,7 @@ public class CalendarServiceImpl implements CalendarService{
 
     @Override
     public List<Cell> getCalendar() {
-        LocalDate date = LocalDate.now();
+        /*LocalDate date = LocalDate.now();
         List<Cell> list = new ArrayList<Cell>();
         for(int i = 0; i < 42; i++) {
             Cell cell = new Cell();
@@ -50,8 +50,8 @@ public class CalendarServiceImpl implements CalendarService{
         Map<String, Object> result = jdbcService.getCounts();
         Cell cell = list.get(0);
         cell.setTd_sj((Integer)result.get("kc"));
-        cell.setHc_sj((Integer)result.get("hc"));
-        return list;
+        cell.setHc_sj((Integer)result.get("hc"));*/
+        return getCount();
     }
 
     @Override
@@ -129,8 +129,8 @@ public class CalendarServiceImpl implements CalendarService{
         }
         Map<String, Object> result = jdbcService.getCounts();
         Cell cell = list.get(0);
-        cell.setTd_sj((Integer)result.get("kc"));
-        cell.setHc_sj((Integer)result.get("hc"));
+        cell.setTd_sj(Integer.parseInt(result.get("kc").toString()));
+        cell.setHc_sj(Integer.parseInt(result.get("hc").toString()));
         return list;
     }
 

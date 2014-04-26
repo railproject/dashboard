@@ -22,9 +22,6 @@ public class JdbcTemplateConfig {
     private @Value("${db.passwd}") String password;
     private @Value("${db.driver}") String driver;
 
-    private @Value("${db.show_sql}") String hibernateShowSql;
-    private @Value("${db.dialect}") String hibernateDialect;
-    private @Value("${db.hbm2ddl_auto}") String hibernateHbm2ddlAuto;
 
     @Bean(destroyMethod = "close")
     public DataSource getDataSource() {

@@ -116,7 +116,9 @@ public class Cell {
         Cell cell = (Cell)obj;
         if (this.td == cell.getTd() && this.zysx == cell.getZysx() && this.sg == cell.getSg()
                 && this.lk == cell.getLk() && this.qt == cell.getQt() && this.getHc() == cell.getHc()
-                && this.date.equals(cell.getDate())/* && this.dayOfWeek.equals(cell.getDayOfWeek())*/) {
+                && this.date.equals(cell.getDate())/* && this.dayOfWeek.equals(cell.getDayOfWeek())*/
+                && this.td_sj == cell.td_sj
+                && this.hc_sj == cell.hc_sj) {
             return true;
         }
         return false;
@@ -124,6 +126,6 @@ public class Cell {
 
     @Override
     public int hashCode() {
-        return this.date.hashCode()/* + this.dayOfWeek.hashCode()*/ + this.td + this.sg + this.zysx + this.hc + this.qt + this.lk;
+        return this.date.hashCode()/* + this.dayOfWeek.hashCode()*/ + this.td + this.sg + this.zysx + this.hc + this.qt + this.lk + this.td_sj + this.hc_sj;
     }
 }
