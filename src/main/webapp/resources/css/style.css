@@ -1011,3 +1011,7 @@ nav .menu_one {
 .row-striped > div:nth-child(even) {
     background-color: #f3f6f9;
 }
+div.bordered:hover, div.bordered:focus {
+    border-color: #1888e8;
+    cursor: pointer;
+}

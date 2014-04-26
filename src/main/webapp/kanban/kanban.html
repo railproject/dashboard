@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>resourceStatistics</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>resourceStatistics</title>
     <!-- Bootstrap core CSS -->
     <link href="../resources/css/custom-bootstrap.css" rel="stylesheet">
     <!--font-awesome-->
-    <link  type="text/css" rel="stylesheet" href="../resources/css/font-awesome.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../resources/css/font-awesome.min.css"/>
     <link type="text/css" rel="stylesheet" href="../resources/css/animate.css">
     <!-- Custom styles for this template -->
     <link href="../resources/css/style.css" rel="stylesheet">
@@ -26,160 +26,201 @@
 <body class="Iframe_body">
 <!--以上为必须要的-->
 <ol class="breadcrumb">
-  <span><i class="fa fa-anchor"></i>当前位置：</span>
-  <li><a href="kanban_old.html">看板</a></li>
+    <span><i class="fa fa-anchor"></i>当前位置：</span>
+    <li><a href="kanban_old.html">看板</a></li>
 </ol>
 <!--分栏框开始-->
 <div class="panel panel-default">
-  <!--panle-heading-->
-  
-  <div class="panel-body">
-      <div id="myTabContent" class="tab-content" >
-          <div class="tab-pane fade in active">
-              <div class="row">
-                  <div class="col-xs-7 col-sm-7 col-md-7 bordered width-7">
-                      <div class="row">
-                          <div class="col-xs-1 col-sm-1 col-md-1 padding-left-0" data-bind="attr: {id: calendar().today.dateStr}">
-                              <div class="spinner margin-top-10" style="display: none;">
-                                  <div class="double-bounce1"></div>
-                                  <div class="double-bounce2"></div>
-                              </div>
-                          </div>
-                          <div class="col-xs-9 col-sm-9 col-md-9 fa-2x" data-bind="text: calendar().today.dateStr">today</div>
-                          <div class="col-xs-2 col-sm-2 col-md-2">
-                              <!--<div class="btn-group pull-right " style="padding-top:5px;">
-                                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                      <span class="caret"></span>
-                                  </button>
-                                  <ul class="dropdown-menu">
-                                      <li><a href="#">运行线</a></li>
-                                  </ul>
-                              </div>-->
-                              <a class="btn btn-default pull-right margin-top-5" href="http://10.1.190.224/DynaTrainGraph/DynaTrainGraph2.html" target="_blank">&nbsp;实际图&nbsp;</a>
-                          </div>
-                      </div>
-                      <div class="row row-striped">
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-center margin-top-10">图定：</div>
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-right" data-bind="text: calendar().today.td, css: calendar().today.tdfa">0</div>
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x" data-bind="text: calendar().today.td_sj, css: calendar().today.td_sjfa">0</div>
-                          </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-center margin-top-10">施工：</div>
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-right" data-bind="text: calendar().today.sg, css: calendar().today.sgfa">0</div>
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x">0</div>
-                          </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-center margin-top-10">重要：</div>
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-right" data-bind="text: calendar().today.zysx, css: calendar().today.zysxfa">0</div>
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x">0</div>
-                          </div>
-                      </div>
-                      <div class="row row-striped">
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-center margin-top-10">临客：</div>
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-right" data-bind="text: calendar().today.lk, css: calendar().today.lkfa">0</div>
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x">0</div>
-                          </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-center margin-top-10">货车：</div>
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-right" data-bind="text: calendar().today.hc, css: calendar().today.hcfa">0</div>
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x" data-bind="text: calendar().today.hc_sj, css: calendar().today.hc_sjfa">0</div>
-                          </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-center margin-top-10">其他：</div>
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-right" data-bind="text: calendar().today.qt, css: calendar().today.qtfa">0</div>
-                              <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x">0</div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-xs-5 col-sm-5 col-md-5 bordered width-3" style="margin-left:25px;">
-                      <div class="row">
-                          <div class="col-xs-1 col-sm-1 col-md-1 padding-left-0" data-bind="attr: {id: calendar().tomorrow.dateStr}">
-                              <div class="spinner margin-top-10" style="display: none;">
-                                  <div class="double-bounce1"></div>
-                                  <div class="double-bounce2"></div>
-                              </div>
-                          </div>
-                          <div class="col-xs-9 col-sm-9 col-md-9 fa-2x" data-bind="text: calendar().tomorrow.dateStr">tomorrow</div>
-                          <div class="col-xs-2 col-sm-2 col-md-2">
-                              <!--<div class="btn-group pull-right " style="padding-top:5px;">
-                                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                      <span class="caret"></span>
-                                  </button>
-                                  <ul class="dropdown-menu">
-                                      <li><a href="#">运行线</a></li>
-                                  </ul>
-                              </div>-->
-                              <a class="btn btn-default pull-right margin-top-5 text-center" href="http://10.1.190.224/DynaTrainGraph/YXT.html" target="_blank">计划图&nbsp;</a>
-                          </div>
-                      </div>
-                      <div class="row row-striped">
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                              <div class="col-xs-6 col-sm-6 col-md-6 text-center margin-top-10">图定：</div>
-                              <div class="col-xs-6 col-sm-6 col-md-6 text-right" data-bind="text: calendar().tomorrow.td, css: calendar().today.tdfa">0</div>
-                          </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                              <div class="col-xs-6 col-sm-6 col-md-6 text-center margin-top-10">施工：</div>
-                              <div class="col-xs-6 col-sm-6 col-md-6 text-right" data-bind="text: calendar().tomorrow.sg, css: calendar().today.sgfa">0</div>
-                          </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                              <div class="col-xs-6 col-sm-6 col-md-6 text-center margin-top-10">重要：</div>
-                              <div class="col-xs-6 col-sm-6 col-md-6 text-right" data-bind="text: calendar().tomorrow.zysx, css: calendar().today.zysxfa">0</div>
-                          </div>
-                      </div>
-                      <div class="row row-striped">
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                              <div class="col-xs-6 col-sm-6 col-md-6 text-center margin-top-10">临客：</div>
-                              <div class="col-xs-6 col-sm-6 col-md-6 text-right" data-bind="text: calendar().tomorrow.lk, css: calendar().today.lkfa">0</div>
-                          </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                              <div class="col-xs-6 col-sm-6 col-md-6 text-center margin-top-10">货车：</div>
-                              <div class="col-xs-6 col-sm-6 col-md-6 text-right" data-bind="text: calendar().tomorrow.hc, css: calendar().today.hcfa">0</div>
-                          </div>
-                          <div class="col-xs-4 col-sm-4 col-md-4">
-                              <div class="col-xs-6 col-sm-6 col-md-6 text-center margin-top-10">其他：</div>
-                              <div class="col-xs-6 col-sm-6 col-md-6 text-right" data-bind="text: calendar().tomorrow.qt, css: calendar().today.qtfa">0</div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="tab-pane fade in active margin-top-15">
-              <div class="row" data-bind="foreach: calendar().cells">
-                  <div class="col-xs-1 col-sm-1 col-md-1 width-10 bordered margin-left-15 margin-top-15">
-                      <div class="row">
-                          <div class="col-xs-1 col-md-1 col-lg-1 padding-left-0" id="2014-04-24" data-bind="attr: {id: dateStr}">
-                              <div class="spinner" style="width: 10px; height: 10px; margin-top: 5px; display: none;">
-                                  <div class="double-bounce1"></div>
-                                  <div class="double-bounce2"></div>
-                              </div>
-                          </div>
-                          <div class="col-xs-11 col-md-11 col-lg-11 text-center" data-bind="text: dateStr"></div>
-                      </div>
-                      <div class="row">
-                          <div class="col-xs-4 col-md-4 col-lg-4 text-left margin-top-10" style="padding-right:0;">
-                              图定：
-                          </div>
-                          <div class="col-xs-8 col-md-8 col-lg-8 text-right" data-bind="text: td, css: tdfa">
-                              123456
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-xs-4 col-md-4 col-lg-4 text-left margin-top-10" style="padding-right:0;">
-                              施工：
-                          </div>
-                          <div class="col-xs-8 col-md-8 col-lg-8 text-right" data-bind="text: sg, css: sgfa">
-                              123456
-                          </div>
-                      </div>
-                  </div><!-- /col-xs-1 col-sm-1 col-md-1 -->
-              </div><!-- /row -->
-          </div>
-      </div>
-  </div>
-  <!--panel-body--> 
-  <!--panel-footer--> 
+    <!--panle-heading-->
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active">
+                <div class="row">
+                    <div class="col-xs-7 col-sm-7 col-md-7 bordered width-7" onclick="doIt(this)">
+                        <div class="row">
+                            <div class="col-xs-1 col-sm-1 col-md-1 padding-left-0"
+                                 data-bind="attr: {id: calendar().today.dateStr}">
+                                <div class="spinner margin-top-10" style="display: none;">
+                                    <div class="double-bounce1"></div>
+                                    <div class="double-bounce2"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-9 col-sm-9 col-md-9 fa-2x" data-bind="text: calendar().today.dateStr">
+                                today
+                            </div>
+                            <div class="col-xs-2 col-sm-2 col-md-2">
+                                <!--<div class="btn-group pull-right " style="padding-top:5px;">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">运行线</a></li>
+                                    </ul>
+                                </div>-->
+                                <a class="btn btn-default pull-right margin-top-5" onclick="window.event.cancelBubble = true;"
+                                   href="http://10.1.190.224/DynaTrainGraph/DynaTrainGraph2.html" target="_blank">&nbsp;实际图&nbsp;</a>
+                            </div>
+                        </div>
+                        <div class="row row-striped">
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-center margin-top-10">图客：</div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-right"
+                                     data-bind="text: calendar().today.td, css: calendar().today.tdfa">0
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x"
+                                     data-bind="text: calendar().today.td_sj, css: calendar().today.td_sjfa">0
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-center margin-top-10">施工：</div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-right"
+                                     data-bind="text: calendar().today.sg, css: calendar().today.sgfa">0
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x">0</div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-center margin-top-10">重要：</div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-right"
+                                     data-bind="text: calendar().today.zysx, css: calendar().today.zysxfa">0
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x">0</div>
+                            </div>
+                        </div>
+                        <div class="row row-striped">
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-center margin-top-10">临客：</div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-right"
+                                     data-bind="text: calendar().today.lk, css: calendar().today.lkfa">0
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x">0</div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-center margin-top-10">货车：</div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-right"
+                                     data-bind="text: calendar().today.hc, css: calendar().today.hcfa">0
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x"
+                                     data-bind="text: calendar().today.hc_sj, css: calendar().today.hc_sjfa">0
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-center margin-top-10">其他：</div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-right"
+                                     data-bind="text: calendar().today.qt, css: calendar().today.qtfa">0
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-5 col-md-5 bordered width-3" style="margin-left:25px;"
+                         onclick="doIt(this)">
+                        <div class="row">
+                            <div class="col-xs-1 col-sm-1 col-md-1 padding-left-0"
+                                 data-bind="attr: {id: calendar().tomorrow.dateStr}">
+                                <div class="spinner margin-top-10" style="display: none;">
+                                    <div class="double-bounce1"></div>
+                                    <div class="double-bounce2"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-9 col-sm-9 col-md-9 fa-2x" data-bind="text: calendar().tomorrow.dateStr">
+                                tomorrow
+                            </div>
+                            <div class="col-xs-2 col-sm-2 col-md-2">
+                                <!--<div class="btn-group pull-right " style="padding-top:5px;">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">运行线</a></li>
+                                    </ul>
+                                </div>-->
+                                <a class="btn btn-default pull-right margin-top-5 text-center" onclick="window.event.cancelBubble = true;"
+                                   href="http://10.1.190.224/DynaTrainGraph/YXT.html" target="_blank">计划图&nbsp;</a>
+                            </div>
+                        </div>
+                        <div class="row row-striped">
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-center margin-top-10">图客：</div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-right"
+                                     data-bind="text: calendar().tomorrow.td, css: calendar().today.tdfa">0
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-center margin-top-10">施工：</div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-right"
+                                     data-bind="text: calendar().tomorrow.sg, css: calendar().today.sgfa">0
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-center margin-top-10">重要：</div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-right"
+                                     data-bind="text: calendar().tomorrow.zysx, css: calendar().today.zysxfa">0
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-striped">
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-center margin-top-10">临客：</div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-right"
+                                     data-bind="text: calendar().tomorrow.lk, css: calendar().today.lkfa">0
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-center margin-top-10">货车：</div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-right"
+                                     data-bind="text: calendar().tomorrow.hc, css: calendar().today.hcfa">0
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-center margin-top-10">其他：</div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 text-right"
+                                     data-bind="text: calendar().tomorrow.qt, css: calendar().today.qtfa">0
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade in active margin-top-15">
+                <div class="row" data-bind="foreach: calendar().cells">
+                    <div class="col-xs-1 col-sm-1 col-md-1 width-10 bordered margin-left-15 margin-top-15"
+                         onclick="doIt(this)">
+                        <div class="row">
+                            <div class="col-xs-1 col-md-1 col-lg-1 padding-left-0" id="2014-04-24"
+                                 data-bind="attr: {id: dateStr}">
+                                <div class="spinner" style="width: 10px; height: 10px; margin-top: 5px; display: none;">
+                                    <div class="double-bounce1"></div>
+                                    <div class="double-bounce2"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-11 col-md-11 col-lg-11 text-center" data-bind="text: dateStr"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 col-md-4 col-lg-4 text-left margin-top-10" style="padding-right:0;">
+                                客车：
+                            </div>
+                            <div class="col-xs-8 col-md-8 col-lg-8 text-right" data-bind="text: td, css: tdfa">
+                                123456
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 col-md-4 col-lg-4 text-left margin-top-10" style="padding-right:0;">
+                                施工：
+                            </div>
+                            <div class="col-xs-8 col-md-8 col-lg-8 text-right" data-bind="text: sg, css: sgfa">
+                                123456
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /col-xs-1 col-sm-1 col-md-1 -->
+                </div>
+                <!-- /row -->
+            </div>
+        </div>
+    </div>
+    <!--panel-body-->
+    <!--panel-footer-->
 </div>
 
 <!--分栏框结束-->
