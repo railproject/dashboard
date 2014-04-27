@@ -20,6 +20,8 @@ function ApplicationModel(stompClient) {
     self.calendar = ko.observable(new CalendarModel());
     self.dayindex = ko.observable(new IndexModel());
 
+    $("#myModal").modal('show');
+
     $.ajax({
         url: "/dashboard/calendar/list",
         async: false,
@@ -33,6 +35,8 @@ function ApplicationModel(stompClient) {
         type: "GET",
         success: self.dayindex().loadDays
     });
+
+    $("#myModal").modal('hide');
 
     self.connect = function() {
         stompClient.connect({}, function(frame) {

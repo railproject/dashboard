@@ -38,6 +38,7 @@ function pageViewModel() {
             return false;
         }
         $("#search").addClass("disabled");
+        $("#myModal").modal('show');
         $.ajax({
             url: "/dashboard/calendar/grid?date=" + $("#date_selector").val(),
 //            async: false,
@@ -75,6 +76,7 @@ function pageViewModel() {
             },
             complete: function() {
                 $("#search").removeClass("disabled");
+                $("#myModal").modal('hide');
             }
         });
     }
