@@ -3,7 +3,12 @@
  */
 $(function(){
     $("#date_selector").datepicker({format: "yyyy-mm-dd"});
-    $("#date_selector").datepicker('setValue', new Date());
+    var date = $.url().param("date");
+    if (date) {
+        $("#date_selector").val(date);
+    } else {
+        $("#date_selector").datepicker('setValue', new Date());
+    }
     var viewModel = new pageViewModel();
     $("#search").click(viewModel.loadPage);
     ko.applyBindings(viewModel);
@@ -16,52 +21,16 @@ function pageViewModel() {
     var self = this;
     self.rows = ko.observableArray();
 
-    self.td_sf_zd = 0;
-    self.td_sf_jc = 0;
-    self.td_sf_sum = 0;
-    self.td_jr_zd = 0;
-    self.td_jr_jc = 0;
-    self.td_jr_sum = 0;
-    self.lk_sf_zd = 0;
-    self.lk_sf_jc = 0;
-    self.lk_sf_sum = 0;
-    self.lk_jr_zd = 0;
-    self.lk_jr_jc = 0;
-    self.lk_jr_sum = 0;
-    self.sum = 0;
+    self.sf_sum = 0;
 
     self.cleanData = function() {
         self.rows.removeAll();
         $("#sum_row").remove();
-        self.td_sf_zd = 0;
-        self.td_sf_jc = 0;
-        self.td_sf_sum = 0;
-        self.td_jr_zd = 0;
-        self.td_jr_jc = 0;
-        self.td_jr_sum = 0;
-        self.lk_sf_zd = 0;
-        self.lk_sf_jc = 0;
-        self.lk_sf_sum = 0;
-        self.lk_jr_zd = 0;
-        self.lk_jr_jc = 0;
-        self.lk_jr_sum = 0;
-        self.sum = 0;
+        self.sf_sum = 0;
     }
 
     self.count = function(row) {
-        self.td_sf_zd += row.td_sf_zd;
-        self.td_sf_jc += row.td_sf_jc;
-        self.td_sf_sum += row.td_sf_sum;
-        self.td_jr_zd += row.td_jr_zd;
-        self.td_jr_jc += row.td_jr_jc;
-        self.td_jr_sum += row.td_jr_sum;
-        self.lk_sf_zd += row.lk_sf_zd;
-        self.lk_sf_jc += row.lk_sf_jc;
-        self.lk_sf_sum += row.lk_sf_sum;
-        self.lk_jr_zd += row.lk_jr_zd;
-        self.lk_jr_jc += row.lk_jr_jc;
-        self.lk_jr_sum += row.lk_jr_sum;
-        self.sum += row.sum;
+        self. sf_sum += row.sf_sum;
     }
 
     self.loadPage = function() {
@@ -92,15 +61,17 @@ function pageViewModel() {
                         lk_jr_zd: grids[i].lk_jr_zd,
                         lk_jr_jc: grids[i].lk_jr_jc,
                         lk_jr_sum: grids[i].lk_jr_zd + grids[i].lk_jr_jc, //临客接入小计
-                        sum: grids[i].td_sf_zd + grids[i].td_sf_jc + grids[i].td_jr_zd + grids[i].td_jr_jc + grids[i].lk_sf_zd + grids[i].lk_sf_jc + grids[i].lk_jr_zd + grids[i].lk_jr_jc
+                        sf_sum: grids[i].td_sf_zd + grids[i].td_sf_jc + grids[i].lk_sf_zd + grids[i].lk_sf_jc,
+                        jr_sum: grids[i].td_jr_zd + grids[i].td_jr_jc + grids[i].lk_jr_zd + grids[i].lk_jr_jc
                     }
                     self.count(row);
                     self.rows.push(row);
                 }
-                $("#content").append("<tr id=\"sum_row\"><td colspan=\"2\"><div class=\"text-center\">总合计</div></td><td>" + self.sum + "</td><td>" + self.td_sf_sum +
+                /*$("#content").append("<tr id=\"sum_row\"><td colspan=\"2\"><div class=\"text-center\">总合计</div></td><td>" + self.sum + "</td><td>" + self.td_sf_sum +
                     "</td><td>" + self.td_sf_jc + "</td><td>" + self.td_sf_zd + "</td><td>" + self.td_jr_sum + "</td><td>" + self.td_jr_jc + "</td><td>" +
                     self.td_jr_zd + "</td><td>" + self.lk_sf_sum + "</td><td>" + self.lk_sf_jc + "</td><td>" + self.lk_sf_zd + "</td><td>" + self.lk_jr_sum +
-                    "</td><td>" + self.lk_jr_jc + "</td><td>" + self.lk_jr_zd + "</td></tr>");
+                    "</td><td>" + self.lk_jr_jc + "</td><td>" + self.lk_jr_zd + "</td></tr>");*/
+                $("#content").append("<tr><td colspan=\"2\" class=\"text-center\">总合计</td><td colspan=\"7\" class=\"text-center\">" + self.sf_sum + "</td></tr>")
             },
             complete: function() {
                 $("#search").removeClass("disabled");
