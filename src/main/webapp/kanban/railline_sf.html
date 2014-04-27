@@ -21,7 +21,7 @@
     <script src="../resources/js/jquery.dataTables.js"></script>
     <script src="../resources/js/datepicker.js"></script>
     <script src="../resources/js/knockout.js"></script>
-    <script src="../resources/js/railline_all.js"></script>
+    <script src="../resources/js/railline_sf.js"></script>
     <!--<script src="../../assets/js/exporting.js"></script>-->
 </head>
 <body class="Iframe_body">
@@ -53,53 +53,60 @@
                 </form>
             </div>
             <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover" id="plan_review_all_table_tjxx">
+                <table class="table table-bordered table-striped table-hover">
                     <thead>
                     <tr>
                         <th rowspan="2"><div style="text-align:center;margin:-5px 0 10px 0;">序号</div></th>
                         <th rowspan="2"><div style="text-align:center;margin:-5px 0 10px 0;">路局名称</div></th>
-                        <th rowspan="2"><div style="text-align:center;margin:-5px 0 10px 0;">始发合计</div></th>
-                        <th colspan="3"><div style="text-align:center;">始发（图定）</div></th>
+                        <th rowspan="2"><div style="text-align:center;margin:-5px 0 10px 0;">客车合计</div></th>
+                        <th colspan="3"><div style="text-align:center;">始发（图客）</div></th>
                         <th colspan="3"><div style="text-align:center;">始发（临客）</div></th>
-                        <th rowspan="2"><div style="text-align:center;margin:-5px 0 10px 0;">接入合计</div></th>
-                        <th colspan="3"><div style="text-align:center;">接入（图定）</div></th>
-                        <th colspan="3"><div style="text-align:center;">接入（临客）</div></th>
+                        <th rowspan="2"><div style="text-align:center;margin:-5px 0 10px 0;">货车合计</div></th>
+                        <th colspan="3"><div style="text-align:center;">始发（货车）</div></th>
+                        <th colspan="3"><div style="text-align:center;">始发（行邮五定）</div></th>
+                        <th colspan="3"><div style="text-align:center;">始发（路用）</div></th>
                     </tr>
                     <tr>
-                        <th>小计</th>
-                        <th>交出</th>
-                        <th>终到</th>
-                        <th>小计</th>
-                        <th>交出</th>
-                        <th>终到</th>
-                        <th>小计</th>
-                        <th>交出</th>
-                        <th>终到</th>
-                        <th>小计</th>
-                        <th>交出</th>
-                        <th>终到</th>
+                        <th class="text-center">小计</th>
+                        <th class="text-center">交出</th>
+                        <th class="text-center">终到</th>
+                        <th class="text-center">小计</th>
+                        <th class="text-center">交出</th>
+                        <th class="text-center">终到</th>
+                        <th class="text-center">小计</th>
+                        <th class="text-center">交出</th>
+                        <th class="text-center">终到</th>
+                        <th class="text-center">小计</th>
+                        <th class="text-center">交出</th>
+                        <th class="text-center">终到</th>
+                        <th class="text-center">小计</th>
+                        <th class="text-center">交出</th>
+                        <th class="text-center">终到</th>
                     </tr>
                     </thead>
-                    <tbody data-bind="foreach: rows" id="content">
+                    <tbody id="content" data-bind="foreach: rows">
                         <tr>
-                            <td data-bind="text: index"></td>
-                            <td data-bind="text: lj_name"></td>
-                            <td data-bind="text: sf_sum"></td>
-                            <td data-bind="text: td_sf_sum"></td>
-                            <td data-bind="text: td_sf_jc"></td>
-                            <td data-bind="text: td_sf_zd"></td>
-                            <td data-bind="text: lk_sf_sum"></td>
-                            <td data-bind="text: lk_sf_jc"></td>
-                            <td data-bind="text: lk_sf_zd"></td>
-                            <td data-bind="text: jr_sum"></td>
-                            <td data-bind="text: td_jr_sum"></td>
-                            <td data-bind="text: td_jr_jc"></td>
-                            <td data-bind="text: td_jr_zd"></td>
-                            <td data-bind="text: lk_jr_sum"></td>
-                            <td data-bind="text: lk_jr_jc"></td>
-                            <td data-bind="text: lk_jr_zd"></td>
+                            <td class="text-center" data-bind="text: index"></td>
+                            <td class="text-center" data-bind="text: short_name"></td>
+                            <td class="text-center" data-bind="text: kc_sum"></td>
+                            <td class="text-center" data-bind="text: td_sum"></td>
+                            <td class="text-center" data-bind="text: td_jc"></td>
+                            <td class="text-center" data-bind="text: td_zd"></td>
+                            <td class="text-center" data-bind="text: lk_sum"></td>
+                            <td class="text-center" data-bind="text: lk_jc"></td>
+                            <td class="text-center" data-bind="text: lk_zd"></td>
+                            <td class="text-center" data-bind="text: hc_all_sum"></td>
+                            <td class="text-center" data-bind="text: hc_sum"></td>
+                            <td class="text-center" data-bind="text: hc_jc"></td>
+                            <td class="text-center" data-bind="text: hc_zd"></td>
+                            <td class="text-center" data-bind="text: xywd_sum"></td>
+                            <td class="text-center" data-bind="text: xywd_jc"></td>
+                            <td class="text-center" data-bind="text: xywd_zd"></td>
+                            <td class="text-center" data-bind="text: ly_sum"></td>
+                            <td class="text-center" data-bind="text: ly_jc"></td>
+                            <td class="text-center" data-bind="text: ly_zd"></td>
                         </tr>
-                        <!--<tr><td colspan="2" class="text-center">总合计</td><td colspan="7" class="text-center">12345</td></tr>-->
+                        <!--<tr><td colspan="2" class="text-center">总合计</td><td colspan="19" class="text-center">12345</td></tr>-->
                     </tbody>
                 </table>
             </div>
@@ -115,7 +122,7 @@
             </div>-->
             <div class="modal-body">
                 <div class="progress progress-striped">
-                    <div class="progress-bar progress-bar-default" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> <span class="sr-only">)</span> </div>
+                    <div class="progress-bar progress-bar-default active" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> <span class="sr-only">)</span> </div>
                 </div>
             </div>
 <!--            <div class="modal-footer">

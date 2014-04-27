@@ -38,7 +38,9 @@ function pageViewModel() {
             return false;
         }
         $("#search").addClass("disabled");
-        $("#myModal").modal('show');
+        $("#myModal").modal('show').css({
+            "margin-top": "200px"
+        });
         $.ajax({
             url: "/dashboard/calendar/grid?date=" + $("#date_selector").val(),
 //            async: false,
@@ -72,7 +74,7 @@ function pageViewModel() {
                     "</td><td>" + self.td_sf_jc + "</td><td>" + self.td_sf_zd + "</td><td>" + self.td_jr_sum + "</td><td>" + self.td_jr_jc + "</td><td>" +
                     self.td_jr_zd + "</td><td>" + self.lk_sf_sum + "</td><td>" + self.lk_sf_jc + "</td><td>" + self.lk_sf_zd + "</td><td>" + self.lk_jr_sum +
                     "</td><td>" + self.lk_jr_jc + "</td><td>" + self.lk_jr_zd + "</td></tr>");*/
-                $("#content").append("<tr><td colspan=\"2\" class=\"text-center\">总合计</td><td colspan=\"7\" class=\"text-center\">" + self.sf_sum + "</td></tr>")
+                $("#content").append("<tr id=\"sum_row\"><td colspan=\"2\" class=\"text-center\">总合计</td><td colspan=\"7\" class=\"text-center\">" + self.sf_sum + "</td></tr>")
             },
             complete: function() {
                 $("#search").removeClass("disabled");
