@@ -261,7 +261,7 @@ public class CalendarServiceImpl implements CalendarService{
         ObjectMapper objectMapper = new ObjectMapper();
         LocalDate now = LocalDate.now();
         Map<String, String> params = new HashMap<String, String>();
-        params.put("sourceTime", now.plusDays(1).toString("yyyy-MM-dd") + " 00:00:00");
+        params.put("sourceTime", now.toString("yyyy-MM-dd") + " 00:00:00");
         params.put("targetTime", now.plusDays(2).toString("yyyy-MM-dd") + " 00:00:00");
         params.put("code", "01"); // 看板01  分析10
         params.put("timeFormat", "yyyy-MM-dd hh:mm:ss");
