@@ -5,6 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.portfolio.model.Cell;
 import org.springframework.samples.portfolio.model.Grid;
+import org.springframework.samples.portfolio.model.Grid2;
 import org.springframework.samples.portfolio.service.CalendarService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,5 +42,17 @@ public class CalendarRestController {
     public List<Grid> getGrid(@RequestParam(value="date") String date) throws Exception {
         logger.debug("get grid: " + date);
         return this.calendarService.getGrid(date);
+    }
+
+    @RequestMapping(value = "/sf", method = RequestMethod.GET)
+    public List<Grid2> getSF(@RequestParam(value="date") String date) throws Exception {
+        logger.debug("get grid: " + date);
+        return this.calendarService.getGrid2(date, "sf");
+    }
+
+    @RequestMapping(value = "/jr", method = RequestMethod.GET)
+    public List<Grid2> getJR(@RequestParam(value="date") String date) throws Exception {
+        logger.debug("get grid: " + date);
+        return this.calendarService.getGrid2(date, "jr");
     }
 }

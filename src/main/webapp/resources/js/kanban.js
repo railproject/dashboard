@@ -20,7 +20,9 @@ function ApplicationModel(stompClient) {
     self.calendar = ko.observable(new CalendarModel());
     self.dayindex = ko.observable(new IndexModel());
 
-    $("#myModal").modal('show');
+    $("#myModal").modal('show').css({
+        "margin-top": "200px"
+    });
 
     $.ajax({
         url: "/dashboard/calendar/list",

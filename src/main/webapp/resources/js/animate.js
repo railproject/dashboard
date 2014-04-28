@@ -19,5 +19,6 @@ function show(id) {
 }
 
 function doIt(ele) {
-    window.open("railline_all.html?date=" + $(ele).find("div.padding-left-0").get(0).id, "_blank");
+    return false;
+   // window.open("railline_all.html?date=" + $(ele).find("div.padding-left-0").get(0).id, "_blank");
 }
