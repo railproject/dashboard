@@ -42,7 +42,7 @@ public class CalendarServiceImpl implements CalendarService{
             LocalDate now = LocalDate.now();
             Map<String, String> params = new HashMap<String, String>();
             params.put("sourceTime", now.toString("yyyy-MM-dd") + " 00:00:00");
-            params.put("targetTime", now.plusDays(42).toString("yyyy-MM-dd") + " 23:59:59");
+            params.put("targetTime", now.plusDays(42).toString("yyyy-MM-dd") + " 00:00:00");
             params.put("code", "01"); // 看板01  分析10
             params.put("timeFormat", "yyyy-MM-dd hh:mm:ss");
             String resp =  getData(params);
@@ -262,7 +262,7 @@ public class CalendarServiceImpl implements CalendarService{
         LocalDate now = LocalDate.now();
         Map<String, String> params = new HashMap<String, String>();
         params.put("sourceTime", now.toString("yyyy-MM-dd") + " 00:00:00");
-        params.put("targetTime", now.plusDays(1).toString("yyyy-MM-dd") + " 23:59:59");
+        params.put("targetTime", now.plusDays(2).toString("yyyy-MM-dd") + " 00:00:00");
         params.put("code", "01"); // 看板01  分析10
         params.put("timeFormat", "yyyy-MM-dd hh:mm:ss");
         try {
