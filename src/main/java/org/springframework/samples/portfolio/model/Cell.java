@@ -17,6 +17,8 @@ public class Cell {
 
     private int lk;
 
+    private int lk_sj;
+
     private int sg;
 
     private int hc;
@@ -63,6 +65,14 @@ public class Cell {
 
     public void setLk(int lk) {
         this.lk = lk;
+    }
+
+    public int getLk_sj() {
+        return lk_sj;
+    }
+
+    public void setLk_sj(int lk_sj) {
+        this.lk_sj = lk_sj;
     }
 
     public int getSg() {

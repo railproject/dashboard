@@ -7,8 +7,10 @@ $(function() {
     var stompClient = Stomp.over(socket);
 
     var appModel = new ApplicationModel(stompClient);
-    ko.applyBindings(appModel);
 
+
+//    appModel.loadPage();
+    ko.applyBindings(appModel);
     appModel.connect();
 });
 
@@ -18,7 +20,6 @@ function ApplicationModel(stompClient) {
 
     self.username = ko.observable();
     self.calendar = ko.observable(new CalendarModel());
-    self.dayindex = ko.observable(new IndexModel());
 
     $("#myModal").modal('show').css({
         "margin-top": "200px"
@@ -28,17 +29,11 @@ function ApplicationModel(stompClient) {
         url: "/dashboard/calendar/list",
         async: false,
         type: "GET",
-        success: self.calendar().loadCalendar
+        success: self.calendar().loadCalendar,
+        complete: function() {
+            $("#myModal").modal('hide');
+        }
     });
-
-    $.ajax({
-        url: "/dashboard/calendar/days",
-        async: false,
-        type: "GET",
-        success: self.dayindex().loadDays
-    });
-
-    $("#myModal").modal('hide');
 
     self.connect = function() {
         stompClient.connect({}, function(frame) {
@@ -95,11 +90,6 @@ function CalendarModel() {
     }
 
     self.updateCalendar = function(calendars) {
-//        self.cleanDate()
-//        self.loadCalendar(calendars);
-//        if (self.cells().length == 0) {
-//            self.loadCalendar(calendars);
-//        }
         for ( var i = 0; i < calendars.length; i ++) {
 
             if ( i ==0 ) {
@@ -122,31 +112,6 @@ function CalendarModel() {
     }
 }
 
-function IndexModel() {
-    var self = this;
-
-    self.days = ko.observableArray();
-
-    self.loadDays = function(dates) {
-        for(var i = 0; i < dates.length; i ++) {
-            var day = new Day(i, dates[i]);
-            self.days.push(day);
-        }
-    }
-}
-
-
-function Day(index, date) {
-    var self = this;
-
-    self.date = date;
-    self.day = ko.observable(moment(date).date());
-    self.index = index;
-    self.isToday = ko.computed(function() {
-        return self.index == 0? "btn btn-default margin-top-5" : "btn btn-default margin-top-5";
-    })
-}
-
 function Cell(cell) {
     var self = this;
 
@@ -156,37 +121,41 @@ function Cell(cell) {
 //    self.dateStr = ko.observable("<span class=\"badge\">" + cell.dayOfWeek + "</span>" + cell.date);
     self.zysx = ko.observable(cell.zysx);
     self.zysxfa = ko.computed(function() {
-        return cell.zysx > 0? "red_number fa-2x": "fa-2x";
+        return cell.zysx > 0? "red_number": "";
     });
     self.td = ko.observable(cell.td);
     self.tdfa = ko.computed(function() {
-        return cell.td > 0? "red_number fa-2x": "fa-2x";
+        return cell.td > 0? "red_number": "";
     });
     self.lk = ko.observable(cell.lk);
     self.lkfa = ko.computed(function() {
-        return cell.lk > 0? "red_number fa-2x": "fa-2x";
+        return cell.lk > 0? "red_number": "";
+    });
+    self.lk_sj = ko.observable(cell.lk_sj);
+    self.lk_sjfa = ko.computed(function() {
+        return cell.lk_sj > 0? "red_number": "";
     });
     self.sg = ko.observable(cell.sg);
     self.sgfa = ko.computed(function() {
-        return cell.sg > 0? "red_number fa-2x": "fa-2x";
+        return cell.sg > 0? "red_number": "";
     });
     self.hc = ko.observable(cell.hc);
     self.hcfa = ko.computed(function() {
-        return cell.hc > 0? "red_number fa-2x": "fa-2x";
+        return cell.hc > 0? "red_number": "";
     });
     self.qt = ko.observable(cell.qt);
     self.qtfa = ko.computed(function() {
-        return cell.qt > 0? "red_number fa-2x": "fa-2x";
+        return cell.qt > 0? "red_number": "";
     });
     self.td_sj = ko.observable(cell.td_sj);
     self.td_sjfa = ko.computed(function() {
-        return cell.td_sj > 0? "red_number fa-2x": "fa-2x"
+        return cell.td_sj > 0? "red_number": ""
     });
     self.hc_sj = ko.observable(cell.hc_sj);
     self.hc_sjfa = ko.computed(function() {
-        return cell.hc_sj > 0? "red_number fa-2x": "fa-2x";
-    })
-;
+        return cell.hc_sj > 0? "red_number": "";
+    });
+
     self.updateCell = function(cell) {
         self.date = cell.date;
         self.dateStr = ko.observable(cell.date);

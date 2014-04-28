@@ -67,8 +67,9 @@ public class CalendarServiceImpl implements CalendarService{
             });
             Map<String, Object> counts = jdbcService.getCounts();
             Cell cell = list.get(0);
-            cell.setTd_sj(Integer.parseInt(counts.get("kc").toString()));
+            cell.setTd_sj(Integer.parseInt(counts.get("tk").toString()));
             cell.setHc_sj(Integer.parseInt(counts.get("hc").toString()));
+            cell.setLk_sj(Integer.parseInt(counts.get("lk").toString()));
         } catch (JsonProcessingException e) {
             logger.error(e.getMessage());
         } catch (IOException e) {

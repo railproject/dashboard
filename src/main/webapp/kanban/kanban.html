@@ -50,14 +50,6 @@
                                 today
                             </div>
                             <div class="col-xs-2 col-sm-2 col-md-2">
-                                <!--<div class="btn-group pull-right " style="padding-top:5px;">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">运行线</a></li>
-                                    </ul>
-                                </div>-->
                                 <a class="btn btn-default pull-right margin-top-5" onclick="window.event.cancelBubble = true;"
                                    href="http://10.1.190.224/DynaTrainGraph/DynaTrainGraph2.html" target="_blank">&nbsp;实际图&nbsp;</a>
                             </div>
@@ -65,7 +57,7 @@
                         <div class="row row-striped">
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="col-xs-4 col-sm-4 col-md-4 text-center margin-top-10">图客：</div>
-                                <div class="col-xs-4 col-sm-4 col-md-4 text-right"
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x"
                                      data-bind="text: calendar().today.td, css: calendar().today.tdfa">0
                                 </div>
                                 <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x"
@@ -93,7 +85,8 @@
                                 <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x"
                                      data-bind="text: calendar().today.lk, css: calendar().today.lkfa">0
                                 </div>
-                                <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x">0</div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 text-right fa-2x"
+                                     data-bind="text: calendar().today.lk_sj, css: calendar().today.lk_sjfa">0</div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="col-xs-4 col-sm-4 col-md-4 text-center margin-top-10">货车：</div>
@@ -201,7 +194,7 @@
                                 客车：
                             </div>
                             <div class="col-xs-8 col-md-8 col-lg-8 text-right fa-2x" data-bind="text: td, css: tdfa">
-                                123456
+                                0
                             </div>
                         </div>
                         <div class="row">
@@ -209,7 +202,7 @@
                                 施工：
                             </div>
                             <div class="col-xs-8 col-md-8 col-lg-8 text-right fa-2x" data-bind="text: sg, css: sgfa">
-                                123456
+                                0
                             </div>
                         </div>
                     </div>
