@@ -21,16 +21,22 @@ function pageViewModel() {
     var self = this;
     self.rows = ko.observableArray();
 
-    self.sum = 0;
+    self.kc_sum = 0;
+    self.hc_sum = 0;
+    self.ly_sum = 0;
 
     self.cleanData = function() {
         self.rows.removeAll();
         $("#sum_row").remove();
-        self.sum = 0;
+        self.kc_sum = 0;
+        self.hc_sum = 0;
+        self.ly_sum = 0;
     }
 
     self.count = function(row) {
-        self. sum += row.kc_sum + row.ly_sum + row.hc_all_sum;
+        self.kc_sum += row.kc_sum;
+        self.hc_sum += row.hc_all_sum;
+        self.ly_sum += row.ly_sum;
     }
 
     self.loadPage = function() {
@@ -75,7 +81,9 @@ function pageViewModel() {
                     self.count(row);
                     self.rows.push(row);
                 }
-                $("#content").append("<tr id=\"sum_row\"><td colspan=\"2\" class=\"text-center\">总合计</td><td colspan=\"17\" class=\"text-center\">" + self.sum + "</td></tr>")
+                var sum_row = "<tr id=\"sum_row\"><td colspan=\"2\" class=\"text-center\">总合计</td><td colspan=\"7\" class=\"text-center\">" + self.kc_sum + "</td>" +
+                    "<td colspan=\"7\" class=\"text-center\">" + self.hc_sum + "</td><td colspan=\"3\" class=\"text-center\">" + self.ly_sum + "</td></tr>";
+                $("#content").append(sum_row);
             },
             complete: function() {
                 $("#search").removeClass("disabled");

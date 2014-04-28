@@ -52,7 +52,9 @@ public class CalendarServiceImpl implements CalendarService{
             for(Map<String, Object> dd: data) {
                 Cell cell = new Cell();
                 cell.setDate((String) dd.get("sourceTime"));
-                cell.setTd((Integer) dd.get("trainlineCounts"));
+                cell.setTd((Integer) dd.get("passengerTrainlineCounts"));
+                cell.setHc((Integer) dd.get("freightTrainlineCounts"));
+                cell.setSg((Integer) dd.get("constructionCounts"));
                 list.add(cell);
             }
             Collections.sort(list, new Comparator<Cell>() {
@@ -259,9 +261,9 @@ public class CalendarServiceImpl implements CalendarService{
         ObjectMapper objectMapper = new ObjectMapper();
         LocalDate now = LocalDate.now();
         Map<String, String> params = new HashMap<String, String>();
-        params.put("sourceTime", now.toString("yyyy-MM-dd") + " 00:00:00");
-        params.put("targetTime", now.toString("yyyy-MM-dd") + " 00:00:00");
-        params.put("code", "10"); // 看板01  分析10
+        params.put("sourceTime", now.plusDays(1).toString("yyyy-MM-dd") + " 00:00:00");
+        params.put("targetTime", now.plusDays(2).toString("yyyy-MM-dd") + " 00:00:00");
+        params.put("code", "01"); // 看板01  分析10
         params.put("timeFormat", "yyyy-MM-dd hh:mm:ss");
         try {
             String values = objectMapper.writeValueAsString(params);
@@ -276,7 +278,7 @@ public class CalendarServiceImpl implements CalendarService{
             String resp = response.getEntity(String.class);
             System.out.println(resp);
 
-            Map<String, Object> result = objectMapper.readValue(resp, Map.class);
+            /*Map<String, Object> result = objectMapper.readValue(resp, Map.class);
             List<Map<String, Object>> data = (List<Map<String, Object>>) result.get("data");
             List<Map<String, Object>> list = (List<Map<String, Object>>) data.get(0).get("planBureauStatisticsDtos");
             for(Map<String, Object> bb: list) {
@@ -293,7 +295,7 @@ public class CalendarServiceImpl implements CalendarService{
                     System.out.println(dd.get("accessTargetTrainlineCounts"));
                     System.out.println(dd.get("accessSurrenderTrainlineCounts"));
                 }
-            }
+            }*/
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         } catch (IOException e) {
