@@ -121,39 +121,39 @@ function Cell(cell) {
 //    self.dateStr = ko.observable("<span class=\"badge\">" + cell.dayOfWeek + "</span>" + cell.date);
     self.zysx = ko.observable(cell.zysx);
     self.zysxfa = ko.computed(function() {
-        return cell.zysx > 0? "red_number": "";
+        return self.zysx() > 0? "red_number": "";
     });
     self.td = ko.observable(cell.td);
     self.tdfa = ko.computed(function() {
-        return cell.td > 0? "red_number": "";
+        return self.td() > 0? "red_number": "";
     });
     self.lk = ko.observable(cell.lk);
     self.lkfa = ko.computed(function() {
-        return cell.lk > 0? "red_number": "";
+        return self.lk() > 0? "red_number": "";
     });
     self.lk_sj = ko.observable(cell.lk_sj);
     self.lk_sjfa = ko.computed(function() {
-        return cell.lk_sj > 0? "red_number": "";
+        return self.lk_sj() > 0? "red_number": "";
     });
     self.sg = ko.observable(cell.sg);
     self.sgfa = ko.computed(function() {
-        return cell.sg > 0? "red_number": "";
+        return self.sg() > 0? "red_number": "";
     });
     self.hc = ko.observable(cell.hc);
     self.hcfa = ko.computed(function() {
-        return cell.hc > 0? "red_number": "";
+        return self.hc() > 0? "red_number": "";
     });
     self.qt = ko.observable(cell.qt);
     self.qtfa = ko.computed(function() {
-        return cell.qt > 0? "red_number": "";
+        return self.qt() > 0? "red_number": "";
     });
     self.td_sj = ko.observable(cell.td_sj);
     self.td_sjfa = ko.computed(function() {
-        return cell.td_sj > 0? "red_number": ""
+        return self.td_sj() > 0? "red_number": ""
     });
     self.hc_sj = ko.observable(cell.hc_sj);
     self.hc_sjfa = ko.computed(function() {
-        return cell.hc_sj > 0? "red_number": "";
+        return self.hc_sj() > 0? "red_number": "";
     });
 
     self.updateCell = function(cell) {
