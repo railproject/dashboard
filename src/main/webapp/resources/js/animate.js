@@ -15,6 +15,7 @@ function show(id) {
         timer.reset();
     }
 
+    console.log("show:" + id);
 
 }
 

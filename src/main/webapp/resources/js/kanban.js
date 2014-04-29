@@ -97,8 +97,8 @@ function CalendarModel() {
             } else if(i == 1) {
                 self.tomorrow.updateCell(calendars[i]);
             } else {
-                var cell0 = new Cell(calendars[i]);
-                var cell = self.cellMap[cell0.date];
+//                var cell0 = new Cell(calendars[i]);
+                var cell = self.cellMap[calendars[i].date];
                 if ( cell != null) {
                     cell.updateCell(calendars[i]);
                 }
@@ -162,6 +162,7 @@ function Cell(cell) {
         self.zysx(cell.zysx);
         self.td(cell.td);
         self.lk(cell.lk);
+        self.lk_sj(cell.lk_sj);
         self.sg(cell.sg);
         self.hc(cell.hc);
         self.qt(cell.qt);
@@ -171,11 +172,13 @@ function Cell(cell) {
         if(self.cell.zysx != cell.zysx
             || self.cell.td != cell.td
             || self.cell.lk != cell.lk
+            || self.cell.lk_sj != cell.lk_sj
             || self.cell.sg != cell.sg
             || self.cell.hc != cell.hc
             || self.cell.qt != cell.qt
             || self.cell.td_sj != cell.td_sj
             || self.cell.hc_sj != cell.hc_sj) {
+            self.cell = cell;
             show(cell.date);
         }
     }
