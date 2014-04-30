@@ -14,9 +14,6 @@ function show(id) {
     } else if (timer.isActive) {
         timer.reset();
     }
-
-    console.log("show:" + id);
-
 }
 
 function doIt(ele) {
